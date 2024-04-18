@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            html {
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+                border: 0px solid green;
+                }
+            body {
+                min-height: 100%;
+                padding: 20px;
+                width: 1000px; 
+                margin: auto;
+                border: 0px solid blue;
+                color: white;
+                background-color: black;
+            }
+            p {
+                font-size: 3rem;
+            }
+            input, button {
+                font-size: 2rem;
+            }
+            hr {
+                margin: auto;
+            }
+            .score {
+                width: 3em;
+            }
+        </style>
+        <title>CKO Scoreboard Controls</title>
+    </head>
+    <body class="w3-display-container">
+        <!-- Home Team Score -->
+        <div>
+            <p id="home-team-name">Home Team</p>
+            <p id="home-team-score">00</p>
+            <p id="home-team-score-buttons">
+                <button type="button" id="add-1-home-team" 
+                        onclick="addToScore(homeTeamScore, 1)">
+                        +1
+                </button>
+                <button 
+                    type="button" id="subtract-1-home-team" 
+                    onclick="addToScore(homeTeamScore, -1)">
+                    &minus;1
+                </button>
+                <button type="button" id="add-2-home-team" 
+                        onclick="addToScore(homeTeamScore, 2)">
+                        +2
+                </button>
+                <button 
+                    type="button" id="subtract-2-home-team" 
+                    onclick="addToScore(homeTeamScore, -2)">
+                    &minus;2
+                </button>                
+                <button type="button" id="add-3-home-team" 
+                        onclick="addToScore(homeTeamScore, 3)">
+                        +3
+                </button>
+                <button 
+                    type="button" id="subtract-3-home-team" 
+                    onclick="addToScore(homeTeamScore, -3)">
+                    &minus;3
+                </button>
+                <button type="button" id="add-4-home-team" 
+                        onclick="addToScore(homeTeamScore, 4)">
+                        +4
+                </button>
+                <button 
+                    type="button" id="subtract-4-home-team" 
+                    onclick="addToScore(homeTeamScore, -4)">
+                    &minus;4
+                </button>
+            </p>
+            <p id="home-team-input-controls">
+                <input  type="number" class="score" name="home-team-input" 
+                        max="999" maxlength="3em" id="home-team-input"
+                        aria-label="Home Team Score Input" placeholder="000">
+                <button onclick="updateScoreByInput(homeTeamInput, homeTeamScore)">
+                    Update Score
+                </button>
+                <button onclick="resetScore(homeTeamInput, homeTeamScore)">
+                    Reset
+                </button>
+            </p>
+        </div>
+        <hr/>
+
+        <!-- Away Team Score -->
+        <div>
+            <p id="away-team-name">Away Team</p>
+            <p id="away-team-score">00</p>
+            <p id="away-team-score-buttons">
+                <button type="button" id="add-1-away-team" 
+                        onclick="addToScore(awayTeamScore, 1)">
+                        +1
+                </button>
+                <button type="button" id="subtract-1-away-team" 
+                        onclick="addToScore(awayTeamScore, -1)">
+                        &minus;1
+                </button>
+                <button type="button" id="add-2-away-team" 
+                        onclick="addToScore(awayTeamScore, 2)">
+                        +2
+                </button>
+                <button 
+                    type="button" id="subtract-2-away-team" 
+                    onclick="addToScore(awayTeamScore, -2)">
+                    &minus;2
+                </button>                
+                <button type="button" id="add-3-away-team" 
+                        onclick="addToScore(awayTeamScore, 3)">
+                        +3
+                </button>
+                <button 
+                    type="button" id="subtract-3-away-team" 
+                    onclick="addToScore(awayTeamScore, -3)">
+                    &minus;3
+                </button>
+                <button type="button" id="add-4-away-team-score" 
+                        onclick="addToScore(awayTeamScore, 4)">
+                        +4
+                </button>
+                <button 
+                    type="button" id="subtract-4-away-team" 
+                    onclick="addToScore(awayTeamScore, -4)">
+                    &minus;4
+                </button>
+            </p>
+            <p id="away-team-input-controls">
+                <input  type="number" class="score" name="away-team-input" 
+                        max="999" maxlength="3em" id="away-team-input"
+                        aria-label="Away Team Score Input" placeholder="000">
+                <button onclick="updateScoreByInput(awayTeamInput, awayTeamScore)">
+                    Update Score
+                </button>
+                <button onclick="resetScore(awayTeamInput, awayTeamScore)">
+                    Reset
+                </button>
+            </p>
+        </div>
+        <script type="text/javascript" src="js/scoreboard_controls.js"></script>
+        <hr/>
+        <!-- <script type="text/javascript" src="js/create_scoreboard_buttons.js"></script> -->
+    </body>
+</html>
