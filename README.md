@@ -10,7 +10,7 @@ At the moment, only the score update controls are functional.  The UI template f
 - time out
 - final score
 
-has been written.  THe control functions need to be written.
+has been written.  The control functions need to be written.
 
 This only works on the client side using `localStorage`.  My goal is to add a simple back-end to improve speed and add an interface to
 update participant names with simple css text animations in sync with the announcers.
