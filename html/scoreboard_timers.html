@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="scoreboard_controls.css">
+        <title id="scoreboard-timers">CKO Scoreboard Timers</title>
+    </head>
+    <body class="w3-display-container">
+        <!-- Game Clock -->
+        <!-- TBD:  See Countdown Timer articles -->
+        <div id="game-clock-controls">
+            <p id="game-clock-name">Game Clock</p>
+            <p id="game-clock">00:00</p>
+            <div id="game-clock-buttons">
+                <p id="game-clock-minutes-buttons">
+                    <span>Min: </span>
+                    <button type="button" id="add-1-min-game-clock" 
+                            onclick="addToTimer()">
+                            +1
+                    </button>
+                    <button type="button" id="subtract-1-min-game-clock" 
+                            onclick="addToTimer()">
+                            &minus;1
+                    </button>
+                    <button type="button" id="add-10-min-game-clock" 
+                            onclick="addToTimer()">
+                            +10
+                    </button>
+                    <button type="button" id="subtract-10-min-game-clock" 
+                            onclick="addToTimer()">
+                            &minus;10
+                    </button>                
+                </p>
+                <p id="game-clock-seconds-buttons">
+                    <span>Sec: </span>
+                    <button type="button" id="add-1-sec-game-clock" 
+                            onclick="addToTimer()">
+                            +1
+                    </button>
+                    <button type="button" id="subtract-1-sec-game-clock" 
+                            onclick="addToTimer()">
+                            &minus;1
+                    </button>
+                    <button type="button" id="add-10-sec-game-clock" 
+                            onclick="addToTimer()">
+                            +10
+                    </button>
+                    <button type="button" id="subtract-10-sec-game-clock" 
+                            onclick="addToTimer()">
+                            &minus;10
+                    </button>                
+                </p>
+            </div>
+            <p id="game-clock-input-fields">
+                <span>Min </span>
+                <input  type="number" class="score" name="game-clock-minutes-input" 
+                        maxlength="2em" id="game-clock-minutes-input"
+                        aria-label="Game Clock Minutes Input" placeholder="min">
+                <input  type="number" class="score" name="game-clock-seconds-input" 
+                        maxlength="2em" id="game-clock-seconds-input"
+                        aria-label="Game Clock Seconds Input" placeholder="sec">
+                <span> Sec</span>
+            </p>
+            <p id="game-clock-update-buttons">   
+                <button type="button" id="update-game-clock"
+                        onclick="updateGameClock()">
+                        Update Game Clock
+                </button>
+                <button type="button" id="reset-game-clock"
+                        onclick="resetGameClock()">
+                        Reset Game Clock
+                </button>
+            </p>
+        </div>
+
+        <hr/>
+
+        <!-- Jam Timer -->
+        <div id="jam-timer-controls">
+            <p id="jam-timer-name">Jam Timer</p>
+            <p id="jam-timer-clock">
+                <span>1:00 </span>
+            </p>
+            <div id="jam-timer-buttons">
+                <p id="jam-timer-start-stop-reset-buttons">
+                    <button type="button" id="start-stop-jam-timer" 
+                            onclick="startStopTimer()">
+                        Start/Stop
+                    </button>
+                    <button type="button" id="reset-jam-timer" 
+                            onclick="resetTimer()">
+                            Reset
+                    </button>
+                </p>    
+                <p id="jam-timer-minutes-buttons">
+                    <span>Min: </span>
+                    <button type="button" id="add-1-min-jam-timer" 
+                            onclick="addToTimer()">
+                            +1
+                    </button>
+                    <button type="button" id="subtract-1-min-jam-timer" 
+                            onclick="addToTimer()">
+                            &minus;1
+                    </button>
+                </p>
+                <p id="jam-timer-seconds-buttons">
+                <span>Sec: </span>
+                <button type="button" id="add-1-sec-jam-timer" 
+                        onclick="addToTimer()">
+                        +1
+                </button>
+                <button type="button" id="subtract-1-sec-jam-timer" 
+                        onclick="addToTimer()">
+                        &minus;1
+                </button>
+                <button type="button" id="add-10-sec-jam-timer" 
+                        onclick="addToTimer()">
+                        +10
+                </button>
+                <button type="button" id="subtract-10-sec-jam-timer" 
+                        onclick="addToTimer()">
+                        &minus;10
+                </button>                
+                </p>
+            </div>
+            <p id="jam-timer-input-fields">
+                <span>Min </span>
+                <input  type="number" class="score" name="jam-timer-minutes-input" 
+                        maxlength="2em" id="jam-timer-minutes-input"
+                        aria-label="Jam Timer Minutes Input" placeholder="min">
+                <input  type="number" class="score" name="jam-timer-seconds-input" 
+                        maxlength="2em" id="jam-timer-seconds-input"
+                        aria-label="Jam Timer Seconds Input" placeholder="sec">
+                <span> Sec</span>
+            </p>
+            <p id="jam-timer-update-buttons">   
+                <button type="button" id="update-jam-timer"
+                        onclick="updateJamTimer()">
+                        Update Jam Timer
+                </button>
+            </p>
+        </div>
+
+        <hr>
+
+        <!-- Jam Number -->
+        <div id="jam-number-controls">
+            <p id="jam-number-name">Jam Number</p>
+            <p id="jam-number">0</p>
+            <p id="jam-number-buttons">
+                <button type="button" id="add-1-jam-number" 
+                        onclick="addToJam()">
+                        +1
+                </button>
+                <button 
+                    type="button" id="subtract-1-jam-number" 
+                    onclick="addToJam()">
+                    &minus;1
+                </button>
+            </p>
+            <p id="jam-number-inputs">
+                <input  type="number" class="score" name="jam-number-input" 
+                        maxlength="2em" id="jam-number-input"
+                        aria-label="Jam Number Input" placeholder="0">
+                <button type="button" id="update-jam-number" 
+                        onclick="updateJamNumber()">
+                        Update Jam Number
+                </button>
+                <button type="button" id="reset-jam-number"
+                        onclick="resetJamNumber()">
+                        Reset Jam Number
+                </button>
+            </p>
+        </div>
+
+        <hr/>
+
+        <!-- Time Out Timer -->
+        <div id="time-out-timer-controls">
+            <p id="time-out-timer-name">Time Out</p>
+            <p id="time-out-timer-clock">
+                <span>1:00 </span>
+            </p>
+            <p id="time-out-timer-buttons">
+                <button type="button" id="start-stop-time-out-timer"
+                        onclick="startStopTimer()">
+                        Start/Stop
+                </button>
+                <button type="button" id="reset-time-out-timer"
+                        onclick="resetTimer()">
+                        Reset
+                </button>
+            </p>
+        </div>
+
+        <hr/>
+
+        <!-- Period Number -->
+        <div id="period-number-controls">
+            <p id="period-number-name">Period</p>
+            <p id="period-number">1</p>
+            <p id="period-display-buttons">
+                <button type="button" id="toggle-period-number" 
+                        onclick="togglePeriod()">
+                        Toggle P1 / P2
+                </button>
+                <button type="button" id="end-period-1" 
+                        onclick="endPeriod()">
+                        End of Period 1
+                </button>
+                <button type="button" id="halftime" 
+                        onclick="halfTime()">
+                        Half Time
+                </button>
+                <button type="button" id="end-period-2" 
+                        onclick="endPeriod()">
+                        End of Period 2
+                </button>
+                <button type="button" id="clear-period"
+                        onclick="clearPeriod()">
+                        Clear
+                </button>
+            </p>
+        </div>
+
+        <hr/>
+
+        <!-- Final Score -->
+        <div id="final-score-controls">
+            <p id="final-score-name">Display "Final Score"</p>
+            <p id="final-score-display">&nbsp;</p>
+            <p id="final-score-button">
+                <button type="button" id="final-score"
+                        onclick="displayFinalScore()">
+                        Final Score
+                </button>
+                <button type="button" id="clear-final-score"
+                        onclick="clearFinalScore()">
+                        Clear
+                </button>
+            </p>
+        </div>
+
+        <script type="text/javascript" src="../js/scoreboard_controls/scoreboard_update_methods.js">
+            // update and reset methods for:
+                // jam number
+                // timeout (TBD)
+                // period
+                // final score
+                // game clock (TBD)
+        </script>
+
+        <script type="text/javascript" src="../js/initialize_client.js">
+            // Initialize the websocket connection
+            // Transmit unique ID
+        </script>
+
+        <script type="text/javascript" src="../js/source_clients/scoreboard-timers-client.js">
+
+        </script>
+        <hr/>
+        <!-- <script type="text/javascript" src="js/create_scoreboard_buttons.js"></script> -->
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{ 
+    "clients": {
+        "source": {
+            "scores": {
+                "elements": ["score", "time", "name"]
+            },
+            "timers": {
+                "elements": ["time", "name"]
+            },
+            "names-source": {
+                "elements": ["name"]
+            }
+        },
+        "target": {
+            "banner": {
+                "elements": ["name"]
+            },
+            "announcers": {
+                "elements": ["name"]
+            },
+            "names-display": {
+                "elements": ["name"]
+            }
+        }
+    }
+}

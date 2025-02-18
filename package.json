@@ -1,0 +1,25 @@
+{
+  "name": "cko-scoreboard",
+  "version": "1.0.0",
+  "description": "scoreboard app for chicago knockouts roller derby",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaffary/ckoscoreboard.git"
+  },
+  "author": "abbas jaffary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajaffary/ckoscoreboard/issues"
+  },
+  "homepage": "https://github.com/ajaffary/ckoscoreboard#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "ws": "^8.18.0"
+  }
+}
