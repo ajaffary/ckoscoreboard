@@ -29,10 +29,10 @@ const messageTypes = [
     'scoreUpdate',
     'homeTeamUpdate',
     'awayTeamUpdate',
-    'gameClock',
     'jamNumber',
-    'timeout',
     'gameSegment',
+    'gameClock',
+    'timeout',
 ]
 
 // on a new connection, server handles incoming websocket events

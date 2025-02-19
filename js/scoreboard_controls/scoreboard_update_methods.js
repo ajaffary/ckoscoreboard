@@ -1,15 +1,23 @@
 /* 
-clean this up later? 
 
-This file contains functions that are used to update the score of the home 
-and away teams.
+!! clean this up !!
+
+This file contains functions to update:
+- home team scores
+- away team scores
+- both scores
+- jam number
+- game segment
+
+And variables to access:
+- Elements containing the data
+- Buttons to change the data and/or send the updates to websockets server
+
+Still to do:
+- add game clock timer
+- add timeout timer
+
 */
-
-const homeTeamInput = document.getElementById("home-team-input");
-const homeTeamScore = document.getElementById("home-team-score");
-
-const awayTeamInput = document.getElementById("away-team-input");
-const awayTeamScore = document.getElementById("away-team-score");
 
 /**
  * Update Team Score when 'Update Score' button is clicked
@@ -142,43 +150,6 @@ function resetJam(jamInput, jamNumber) {
     // teamScore.textContent = '00';
 }
 
-// jam number manual input element
-const jamInput = document.getElementById('jam-number-input');
-
-// jam number display element
-const jamNumber = document.getElementById('jam-number');
-
-// +1 to Jam Number button
-const addJamButton = document.getElementById('add-1-jam-number');
-addJamButton.setAttribute('onclick', 'addToJam(jamNumber,1)');
-
-// -1 to Jam Number button
-const subtractJamButton = document.getElementById('subtract-1-jam-number');
-subtractJamButton.setAttribute('onclick', 'addToJam(jamNumber,-1)');
-
-// jam number update button
-const updateJamNumber = document.getElementById('update-jam-number');
-updateJamNumber.setAttribute('onclick', 'updateJamByInput(jamInput, jamNumber)');
-
-// jam number reset button
-const resetJamNumber = document.getElementById('reset-jam-number');
-resetJamNumber.setAttribute('onclick', 'resetJam(jamInput, jamNumber)');
-
-
-// 'gameClock' - client sends game clock update
-// TBD
-
-// timeout
-// need to create a countdown timer TBD
-
-
-// 'period' - client sends period update
-// onclick sends a string to element
-// eventlistener sends textcontent
-
-// Game Segment Element
-
-const gameSegment = document.getElementById('game-segment');
 
 /**
  * function to toggle period number
@@ -192,37 +163,61 @@ function togglePeriod() {
 }
 
 /**
- * function to update period number element
+ * function to update game segment element
  */
 function updateText(content, element) {
     element.textContent = content;
 }
+    // +1 to Jam Number button
+    const addJamButton = document.getElementById('add-1-jam-number');
+    addJamButton.setAttribute('onclick', 'addToJam(jamNumber,1)');
 
-// Toggle Period button
-const togglePeriodButton = document.getElementById('toggle-period-button');
-togglePeriodButton.setAttribute('onclick', 'togglePeriod()');
+    // -1 to Jam Number button
+    const subtractJamButton = document.getElementById('subtract-1-jam-number');
+    subtractJamButton.setAttribute('onclick', 'addToJam(jamNumber,-1)');
 
-// End of Period 1 button
-const endPeriodOne = document.getElementById('end-period-1-button');
-endPeriodOne.setAttribute('onclick', 'updateText("End of Period 1", gameSegment)');
+    // jam number update button
+    const updateJamNumber = document.getElementById('update-jam-number');
+    updateJamNumber.setAttribute('onclick', 'updateJamByInput(jamInput, jamNumber)');
 
-// Halftime button
-const halfTime = document.getElementById('halftime-button');
-halfTime.setAttribute('onclick', 'updateText("Halftime", gameSegment)');
+    // jam number reset button
+    const resetJamNumber = document.getElementById('reset-jam-number');
+    resetJamNumber.setAttribute('onclick', 'resetJam(jamInput, jamNumber)');
+    
+    // 'period' - client sends period update
+    // onclick sends a string to element
+    // eventlistener sends textcontent
 
-// End of Period 2 Button
-const endPeriodTwo = document.getElementById('end-period-2-button');
-endPeriodTwo.setAttribute('onclick', 'updateText("End of Period 2", gameSegment)');
+    // Toggle Period button
+    const togglePeriodButton = document.getElementById('toggle-period-button');
+    togglePeriodButton.setAttribute('onclick', 'togglePeriod()');
 
-// Display Final Score button
-const finalScore = document.getElementById('final-score-button');
-finalScore.setAttribute('onclick', 'updateText("Final Score", gameSegment)');
+    // End of Period 1 button
+    const endPeriodOne = document.getElementById('end-period-1-button');
+    endPeriodOne.setAttribute('onclick', 'updateText("End of Period 1", gameSegment)');
 
-// Game Segment Update Button
-// const messageAlert = document.getElementById('update-message-alert');
-const updateGameSegment = document.getElementById('update-game-segment-button');
-// sendUpdateToScoreboard.setAttribute('onclick', 'updateText("Sent to Scoreboard", messageAlert)');
+    // Halftime button
+    const halfTime = document.getElementById('halftime-button');
+    halfTime.setAttribute('onclick', 'updateText("Halftime", gameSegment)');
 
-// Clear Message button
-const clearUpdate = document.getElementById('clear-button');
-clearUpdate.setAttribute('onclick', 'updateText(" ", gameSegment)');
+    // End of Period 2 Button
+    const endPeriodTwo = document.getElementById('end-period-2-button');
+    endPeriodTwo.setAttribute('onclick', 'updateText("End of Period 2", gameSegment)');
+
+    // Display Final Score button
+    const finalScore = document.getElementById('final-score-button');
+    finalScore.setAttribute('onclick', 'updateText("Final Score", gameSegment)');
+
+    // Game Segment Update Button
+    const updateGameSegment = document.getElementById('update-game-segment-button');
+    // updateGameSegment.setAttribute('onclick', 'updateText("Game Segment", gameSegment)');
+
+    // Clear Message button
+    const clearUpdate = document.getElementById('clear-button');
+    clearUpdate.setAttribute('onclick', 'updateText(" ", gameSegment)');
+ 
+// 'gameClock' - client sends game clock update
+// TBD
+
+// timeout
+// need to create a countdown timer TBD

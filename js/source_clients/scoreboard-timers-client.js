@@ -8,6 +8,7 @@
 
 // 'jamNumber' - client sends jam number update
 // eventlistener sends textcontent
+
 updateJamNumber.addEventListener('click', () => {
     // construct jam number update message
     const message = {
@@ -33,6 +34,7 @@ updateJamNumber.addEventListener('click', () => {
 
 // 'gameSegment' - client sends period, halftime, final score update
 // eventlistener sends textcontent
+
 updateGameSegment.addEventListener('click', () => {
     // construct game segment update message
     const message = {

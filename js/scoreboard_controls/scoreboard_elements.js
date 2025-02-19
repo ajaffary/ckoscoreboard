@@ -1,5 +1,6 @@
 /*
-This file contains the functions that are used to create the scoreboard elements.
+This file contains the functions that are used to create the scoreboard control
+elements.
 
 Idea:
 generate:
