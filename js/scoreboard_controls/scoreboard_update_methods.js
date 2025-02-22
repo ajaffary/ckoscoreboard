@@ -155,10 +155,12 @@ function resetJam(jamInput, jamNumber) {
  * function to toggle period number
  */
 function togglePeriod() {
-    if (gameSegment.textContent == 'Period 1') {
-        gameSegment.textContent = 'Period 2';
+    const pOne = 'Period 1'.toUpperCase();
+    const pTwo = 'Period 2'.toUpperCase();
+    if (gameSegment.textContent == pOne) {
+        gameSegment.textContent = pTwo;
     } else {
-        gameSegment.textContent = 'Period 1';
+        gameSegment.textContent = pOne;
     }
 }
 
@@ -194,19 +196,19 @@ function updateText(content, element) {
 
     // End of Period 1 button
     const endPeriodOne = document.getElementById('end-period-1-button');
-    endPeriodOne.setAttribute('onclick', 'updateText("End of Period 1", gameSegment)');
+    endPeriodOne.setAttribute('onclick', 'updateText("END OF PERIOD 1", gameSegment)');
 
     // Halftime button
     const halfTime = document.getElementById('halftime-button');
-    halfTime.setAttribute('onclick', 'updateText("Halftime", gameSegment)');
+    halfTime.setAttribute('onclick', 'updateText("HALF TIME", gameSegment)');
 
     // End of Period 2 Button
     const endPeriodTwo = document.getElementById('end-period-2-button');
-    endPeriodTwo.setAttribute('onclick', 'updateText("End of Period 2", gameSegment)');
+    endPeriodTwo.setAttribute('onclick', 'updateText("END OF PERIOD 2", gameSegment)');
 
     // Display Final Score button
     const finalScore = document.getElementById('final-score-button');
-    finalScore.setAttribute('onclick', 'updateText("Final Score", gameSegment)');
+    finalScore.setAttribute('onclick', 'updateText("FINAL SCORE", gameSegment)');
 
     // Game Segment Update Button
     const updateGameSegment = document.getElementById('update-game-segment-button');

@@ -11,6 +11,7 @@
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
+const wsaddr = '192.168.1.157'
 
 // create express app
 const app = express();
@@ -147,5 +148,5 @@ app.get('/', (req, res) => {
 // Start the server
 const PORT = 3000;
 server.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://${wsaddr}:${PORT}`);
 });

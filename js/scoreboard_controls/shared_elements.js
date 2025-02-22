@@ -23,3 +23,36 @@ const jamNumber = document.getElementById('jam-number');
 
 // Game Segment Element
 const gameSegment = document.getElementById('game-segment');
+
+function loadLogo(team, venue, format='text') {
+    // team names
+    teams = {
+        'cbc': 'Comic Book Crushers',
+        'hh': 'Horrific Haunters',
+        'prp': 'Punk Rock Punishers',
+        'rr': 'Retro Rumblers'
+    }
+
+    // element
+    teamLogo = document.getElementById(venue + '-team-name');
+    
+    // cbc
+    
+        if (format == 'pic') {
+            teamLogo.classList.remove(team);
+            teamLogo.classList.add(`${team}-logo`);
+            teamLogo.innerHTML = `<img src="../images/${team}.png" alt="${teams[team]}" class="logo-image" height="120px">`;
+        } else {
+            teamLogo.classList.remove(`${team}-logo`);
+            teamLogo.classList.add(team);
+            teamLogo.textContent = teams[team];
+        } 
+    
+    // hh
+
+    // prp
+
+    // rr
+
+    return teamLogo;
+}

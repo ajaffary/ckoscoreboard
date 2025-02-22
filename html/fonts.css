@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'All rights reserved';
+    src: local('All rights reserved'), local('Allrightsreserved'),
+        url('fonts/Allrightsreserved.woff2') format('woff2'),
+        url('fonts/Allrightsreserved.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dirty Headline';
+    src: local('Dirty Headline'), local('DirtyHeadline'),
+        url('fonts/DirtyHeadline.woff2') format('woff2'),
+        url('fonts/DirtyHeadline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BadaBoom BB';
+    src: local('BadaBoom BB'), local('BadaBoomBB'),
+        url('fonts/BadaBoomBB.woff2') format('woff2'),
+        url('fonts/BadaBoomBB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura Bold';
+    src: local('Futura-Bold'),
+        url('fonts/Futura-Bold.woff2') format('woff2'),
+        url('fonts/Futura-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
