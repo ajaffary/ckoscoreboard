@@ -7,11 +7,13 @@
 // see example in copilot
 
 // websocket server app
+// npx nodemon js/server/websockets_server.js
+
 
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
-const wsaddr = '192.168.1.157'
+const wsaddr = '192.168.1.159'
 
 // create express app
 const app = express();

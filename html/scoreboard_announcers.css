@@ -47,20 +47,25 @@
 * {
     box-sizing: content-box;
 }
-html, body {
-    margin: auto;
-    padding: 0px;
-    display: grid;
-    height: auto;
-    width: auto;
+html {
     text-align: center;
-    align-items: center;
-    align-content: center;
-    background-color: rgb(50, 50, 50);
-    border: 2px solid black;
+    background-color: black;
+}
+
+body {
+    margin: auto;
+    /* display: grid;*/
+    max-width: 900px;
+    text-align: center;
+    background-color: orange;
+    border: 2px solid white;
+    padding: 10px;
 }
 .timer-container {
+    margin: auto;
     display: grid;
+    width: auto;
+    align-content: center;
     /* grid-template-columns: 0.25fr 2.5fr 1fr 0.75fr 1fr 0.75fr 1fr 2.5fr 0.25fr;*/
     /* grid-template-columns: 1.5fr 0.25fr 2.75fr 0.5fr 1fr 0.5fr 2.75fr 0.5fr 1.25fr ;*/
     grid-template-columns: repeat(3, 1fr);
@@ -70,18 +75,18 @@ html, body {
         "four five six"
         "seven eight nine";
     align-items: center;
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 5px;
+    row-gap: 5px;
     /* height: 120px;*/
     /* border: 2px solid yellow;*/
-    background-color: #000000;
+    background-color: rgba(0, 255, 255, 0.782);
 }
 .tile {
-    height: 95%;
-    width: 95%;
-    padding: 10px;
+    height: 100%;
+    width: 100%;
     align-content: center;
     text-align: center;
+    background-color: black;
     /* border: 2px solid green;*/
 }
 .score-tile {
@@ -90,8 +95,6 @@ html, body {
     font-size: 12rem;
     color: white;
     align-content:center;
-    padding: 0px;
-    height: auto;
     /* border: 2px solid red;*/
 }
 .period-tile, .jam-number-tile {
@@ -132,9 +135,6 @@ html, body {
 .cko-tile {
     grid-area: two;
     justify-self: center;
-    height: 250px;
-    width: 1fr;
-    /* width: 100%;*/
     /* border: 2px solid green; */
 }
 .jam-number-tile {
@@ -148,8 +148,7 @@ html, body {
     text-align: center;
     vertical-align: center;;
     font-family: 'Dirty Headline';
-    font-size: 10rem;
-    padding-top: 50px;
+    font-size: 8rem;
     color: white;
     /* border: 2px solid lightblue;*/
 }
@@ -167,6 +166,15 @@ html, body {
     text-align: center;
 }
 /* Team Logos */
+.logo-image {
+    padding-bottom: 5px;
+    /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
+    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 1px black);
+    max-width: 250px;
+}
+.cko-logo {
+    max-width: 250px;
+}
 .cbc {
     font-family: "Comic Book Crushers";
     font-size: 2.8rem;
@@ -193,8 +201,6 @@ html, body {
     /* background-color: #23a0da; */
     /* padding-bottom: 15px;*/
     border-radius: 4px;
-    max-width: auto; 
-    max-height: auto;
     align-self: center;
     text-align: center;
 }
@@ -219,10 +225,9 @@ html, body {
     /* background-color: #a14b9d40; */
     /* background-color: ##a14b9c; */
     /* padding-bottom: 15px;*/
-    border-radius: 4px;
+    /* border-radius: 4px; */
     justify-self: center;
     align-self: center;
-    max-width: auto;
     text-align: center;
 }
 .rr {
@@ -230,9 +235,4 @@ html, body {
     font-size: 3rem;
     color: #ec1f27;
     padding-top: 15px;
-}
-.logo-image {
-    padding-bottom: 15px;
-    /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
-    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 1px black);
 }

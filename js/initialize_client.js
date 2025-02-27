@@ -3,12 +3,12 @@
 // message type: 'initial' - client connects and sends ID
 // it would be better to store these IDs securely
 // which requires using some encryption scheme
-// which requires some setup and maintenance 
+// which requires some setup and maintenance `
 // which I don't have the bandwidth to do, 
 // so I am just going to use IDs in h1
 
 // websocket local machine address:
-let wsaddr = '192.168.1.157';
+let wsaddr = '192.168.1.159';
 
 // new Websocket client
 const ws = new WebSocket(`ws://${wsaddr}:3000`);
