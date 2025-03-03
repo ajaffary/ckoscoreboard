@@ -1,54 +1,18 @@
-/* 
-@font-face {
-    font-family: "Futura Bold";
-    src: local("Futura Bold"), 
-            url("")
-            format("ttf");
-}
-
-@font-face {
-    font-family: "Dirty Headline";
-    src: local("Dirty Headline"), 
-            url("/Users/abbas/Pictures/cko 2023/assets/fonts/dirty_headline/Dirty Headline.ttf")
-            format("ttf");
-}
-@font-face {
-    font-family: "Headliner 45";
-    src: local("HeadlinerNo.45"), 
-            url("/Users/abbas/Pictures/cko 2023/assets/fonts/headliner_no_45/HeadlinerNo.45 DEMO.ttf")
-            format("ttf");
-}
-@font-face {
-    font-family: "Comic Book Crushers";
-    src: local("BadaBoom BB"), 
-            url("/Users/abbas/Pictures/cko 2023/assets/fonts/badaboom_bb/BADABB__.TTF")
-            format("ttf");
-}
-@font-face {
-    font-family: "Horrific Haunters";
-    src: local("Hungry Hunters"), 
-            url("/Users/abbas/Pictures/cko 2023/assets/fonts/Hungry Hunters.ttf")
-            format("ttf");
-}
-@font-face {
-    font-family: "Punk Rock Punishers";
-    src: local("All rights reserved"), 
-            url("/Users/abbas/Pictures/cko 2023/assets/fonts/all_rights_reserved/All rights reserved.ttf")
-            format("ttf");
-}
-@font-face {
-    font-family: "Retro Rumblers";
-    src: local("Advertising Script Bold"), 
-            url("/Users/abbas/Pictures/cko 2023/assets/fonts/advertising_script/Advertising Script Bold Trial.ttf")
-            format("ttf");
-}
-*/
-
 * {
     box-sizing: content-box;
 }
+:root {
+    --cbc-color: #23a0da;
+    --hh-color: #29b24c;
+    --prp-color: #a14b9c;
+    --rr-color: #ec1f27;
+    --logo-bg-color: #ededed;
+    --text-color: white;
+}
+
 html {
     text-align: center;
+    height: 100%;
     background-color: black;
 }
 
@@ -57,10 +21,32 @@ body {
     /* display: grid;*/
     max-width: 900px;
     text-align: center;
-    background-color: orange;
+    vertical-align: middle;
+    background-color: black;
     border: 2px solid white;
-    padding: 10px;
+    padding: 10px; 
 }
+h1, p, label {
+    margin: 1rem;
+    font-size: 1.6rem;
+    font-family: 'Dirty Headline';
+    color: var(--text-color);
+}
+input, button {
+    margin: 1rem;
+    font-size: 2rem;
+}
+hr {
+    margin: 2rem;
+}
+textarea {
+    margin: 1rem;
+    font-size: 1.2rem;
+    resize: none;
+    max-width: 95%;
+    background-color: lightgray;
+}
+
 .timer-container {
     margin: auto;
     display: grid;
@@ -84,9 +70,11 @@ body {
 .tile {
     height: 100%;
     width: 100%;
+    margin: auto;
     align-content: center;
     text-align: center;
     background-color: black;
+    font-size: 4rem;
     /* border: 2px solid green;*/
 }
 .score-tile {
@@ -97,18 +85,25 @@ body {
     align-content:center;
     /* border: 2px solid red;*/
 }
-.period-tile, .jam-number-tile {
+.period-tile, .jam-number, .timeout-tile {
     font-family: 'Futura Bold';
     font-size: 3rem;
     color: white;
+    margin: auto;
     /* padding: 10px; */
     /* background-color: #000000; */
 }
-.home-score-tile {
-    grid-area: four;
+.jam-timer {
+    margin: auto;
     justify-self: center;
     text-align: center;
+    vertical-align: center;;
+    font-family: 'Dirty Headline';
+    font-size: 8rem;
+    color: white;
+    /* border: 2px solid lightblue;*/
 }
+
 .home-logo-tile {
     grid-area: one;
     justify-self: center;
@@ -117,10 +112,23 @@ body {
     /* padding: 10px; */
     /* border: 2px solid magenta;*/
 }
-.period-tile {
-    grid-area: seven;
+.cko-tile {
+    grid-area: two;
     justify-self: center;
-    /* border: 2px solid pink;*/
+    /* border: 2px solid green; */
+}
+.away-logo-tile {
+    grid-area: three;
+    justify-self: center;
+    text-align: center;
+    vertical-align: center;
+    /* padding: 10px;*/
+    /* border: 2px solid magenta; */
+}
+.home-score-tile {
+    grid-area: four;
+    justify-self: center;
+    text-align: center;
 }
 .game-clock-tile {
     grid-area: five;
@@ -132,49 +140,44 @@ body {
     visibility: hidden;
     /* border: 2px solid pink; */
 }
-.cko-tile {
-    grid-area: two;
-    justify-self: center;
-    /* border: 2px solid green; */
-}
-.jam-number-tile {
-    grid-area: eight;
-    justify-self: center;
-    /* border: 2px solid lightblue; */
-}
-.jam-timer-tile {
-    grid-area: nine;
-    justify-self: center;
-    text-align: center;
-    vertical-align: center;;
-    font-family: 'Dirty Headline';
-    font-size: 8rem;
-    color: white;
-    /* border: 2px solid lightblue;*/
-}
-.away-logo-tile {
-    grid-area: three;
-    justify-self: center;
-    text-align: center;
-    vertical-align: center;
-    /* padding: 10px;*/
-    /* border: 2px solid magenta; */
-}
 .away-score-tile {
     grid-area: six;
     justify-self: center;
     text-align: center;
 }
+.period-tile {
+    grid-area: seven;
+    justify-self: center;
+    /* border: 2px solid pink;*/
+}
+.jam-tile {
+    grid-area: eight;
+    justify-self: center;
+    /* border: 2px solid lightblue; */
+}
+.timeout-tile {
+    grid-area: nine; 
+    justify-self: center;
+}
+
 /* Team Logos */
 .logo-image {
     padding-bottom: 5px;
     /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
     filter: blur(0px) saturate(200%) drop-shadow(2px 2px 1px black);
     max-width: 250px;
+    max-height: 200px;
 }
 .cko-logo {
     max-width: 250px;
 }
+.logo-tile {
+    background-color: #ededed;
+    /* padding-bottom: 15px;*/
+    align-self: center;
+    border-radius: 4px;
+}
+
 .cbc {
     font-family: "Comic Book Crushers";
     font-size: 2.8rem;
@@ -195,15 +198,6 @@ body {
     border-radius: 10px;
     height: 60%;
 }
-.cbc-logo {
-    color: white;
-    background-color: #ededed;
-    /* background-color: #23a0da; */
-    /* padding-bottom: 15px;*/
-    border-radius: 4px;
-    align-self: center;
-    text-align: center;
-}
 .hh {
     font-family: "Horrific Haunters";
     font-size: 3rem;
@@ -219,16 +213,6 @@ body {
     padding-bottom: 0px;
     border-radius: 10px;
     height: 60%;
-}
-.prp-logo {
-    background-color: #ededed;
-    /* background-color: #a14b9d40; */
-    /* background-color: ##a14b9c; */
-    /* padding-bottom: 15px;*/
-    /* border-radius: 4px; */
-    justify-self: center;
-    align-self: center;
-    text-align: center;
 }
 .rr {
     font-family: "Retro Rumblers";

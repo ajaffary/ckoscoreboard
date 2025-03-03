@@ -9,14 +9,19 @@
 // websocket server app
 // npx nodemon js/server/websockets_server.js
 
-
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
-const wsaddr = '192.168.1.159'
+
+const wsaddr = { 
+    localhost: 'localhost',
+    home:'192.168.1.155',
+    cko: '192.168.1.157',
+};
 
 // create express app
 const app = express();
+
 
 // create http server
 const server = http.createServer(app);
@@ -27,6 +32,7 @@ const wss = new WebSocket.Server({ server });
 // create a Map to store connected clients with unique client ids
 const clients = new Map(); 
 
+const chatClients = ['scoreboard-controls', 'scoreboard-announcers'];
 const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers'];
 const messageTypes = [
     'scoreUpdate',
@@ -35,7 +41,7 @@ const messageTypes = [
     'jamNumber',
     'gameSegment',
     'gameClock',
-    'timeout',
+    'timeOut',
 ]
 
 // on a new connection, server handles incoming websocket events
@@ -46,10 +52,9 @@ wss.on('connection', (ws) => {
     ws.on('message', (data) => { 
         const message = JSON.parse(data);
         console.log(`Received message: ${data}`);
-
         // check if message type is 'initial'
-        // this means the scoreboard client is sending its ID
         if (message.type === 'initial') {
+            // this means the scoreboard client is sending its ID
             const clientId = message.senderId;
             // update clients Map with new client ID
             clients.set(clientId, ws);
@@ -99,7 +104,7 @@ wss.on('connection', (ws) => {
                     // reconstruct message object to sanitize data
                     const messageToTarget = {
                         type: message.type,
-                        from: message.senderId,
+                        senderId: message.senderId,
                         content: message.content,
                     }
                     targetClient.send(JSON.stringify(messageToTarget));
@@ -109,30 +114,34 @@ wss.on('connection', (ws) => {
                 }
             }
         }
-        // if message type is 'jamTimerUpdate'
-        else if (message.type === 'jamNumber') {
+        // if message type is 'chat'
+        else if (message.type === 'chat') {
+            console.log(`Received ${message.type}`);
+            const targetClient = clients.get(message.targetId);
+            // console.log(targetClient);
+            // check if target client is available
+            if (targetClient && targetClient.readyState === WebSocket.OPEN) {
+                // send message to target client
+                // reconstruct message object to sanitize data
+                const messageToTarget = {
+                    type: message.type,
+                    senderId: message.senderId,
+                    content: message.content,
+                }
+                targetClient.send(JSON.stringify(messageToTarget));
+                console.log(`Message sent to ${targetClient}: ${messageToTarget}`);
+            } else {
+                ws.send(JSON.stringify({ type: 'error', message: 'Target client not available' }));
+            }
             // insert code here
-            // this means the scoreboard-timer client is sending a jam number update
-            // send the jam timer update to scoreboard-banner client
+            // this means the scoreboard-controls and scoreboard-announcers 
+            // clients are sending a chat message
         }
-        // if message type is 'gameClock'
-        else if (message.type === 'gameClock') {
+        // if message type is 'error'
+        else if (message.type === 'error') {
             // insert code here
-            // this means the scoreboard-timer client is sending a game clock update
-            // send the game clock update to scoreboard-banner client
+            // this means the server is sending an error message
         }
-        // if message type is 'timeOut'
-        else if (message.type === 'timeout') {
-            // insert code here
-            // this means the scoreboard-timer client is sending a time out update
-            // send the time out update to scoreboard-banner client
-        }
-        // if message type is 'period'
-        else if (message.type === 'period') {
-            // insert code here
-            // this means the scoreboard-timer client is sending a period update
-            // send the period update to scoreboard-banner client
-        }        
     });
 
     // handle client disconnect
@@ -150,5 +159,5 @@ app.get('/', (req, res) => {
 // Start the server
 const PORT = 3000;
 server.listen(PORT, () => {
-    console.log(`Server running on http://${wsaddr}:${PORT}`);
+    console.log(`Server running on http://${wsaddr.localhost}:${PORT}`);
 });

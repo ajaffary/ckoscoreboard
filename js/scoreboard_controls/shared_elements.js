@@ -21,6 +21,9 @@ const jamInput = document.getElementById('jam-number-input');
 // jam number display element
 const jamNumber = document.getElementById('jam-number');
 
+// time out display element
+const timeOut = document.getElementById('timeout');
+
 // Game Segment Element
 const gameSegment = document.getElementById('game-segment');
 
@@ -41,7 +44,7 @@ function loadLogo(team, venue, format='text') {
         if (format == 'pic') {
             teamLogo.classList.remove(team);
             teamLogo.classList.add(`${team}-logo`);
-            teamLogo.innerHTML = `<img src="../images/${team}.png" alt="${teams[team]}" class="logo-image" height="120px">`;
+            teamLogo.innerHTML = `<img src="../images/${team}.png" alt="${teams[team]}" class="logo-image">`;
         } else {
             teamLogo.classList.remove(`${team}-logo`);
             teamLogo.classList.add(team);

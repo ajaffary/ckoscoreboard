@@ -1,14 +1,11 @@
 // scoreboard-timers-client event listeners
 
-// 'jamTimerUpdate' - client sends timer update
-// handled by WS604 app
-
 // 'gameClock' - client sends game clock update
 // TBD
 
-// 'jamNumber' - client sends jam number update
-// eventlistener sends textcontent
 
+// 'updateJamNumber' - client sends jam number update
+// eventlistener sends textcontent
 updateJamNumber.addEventListener('click', () => {
     // construct jam number update message
     const message = {
@@ -29,13 +26,33 @@ updateJamNumber.addEventListener('click', () => {
     // messageInput.value = '';
 });
 
-// 'timeout' - client sends time out update
-// eventlistener sends textcontent
 
-// 'gameSegment' - client sends period, halftime, final score update
+// 'updateTimeoutButton' - client sends time out update
 // eventlistener sends textcontent
+updateTimeOutButton.addEventListener('click', () => {
+    // construct time out update message
+    const message = {
+        type: 'timeOut',
+        senderId: clientId,
+        // no need to specify targetId
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        // targetId: targetIdInput.value,
+        content: {
+            timeout: timeOut.dataset.status,
+        },
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+    // no need for messageInput.value to be cleared here
+    // put this with input field below if chat window needed
+    // messageInput.value = '';
+});
 
-updateGameSegment.addEventListener('click', () => {
+
+// 'updateGameSegmentButton' - client sends period, halftime, final score update
+// eventlistener sends textcontent
+updateGameSegmentButton.addEventListener('click', () => {
     // construct game segment update message
     const message = {
         type: 'gameSegment',

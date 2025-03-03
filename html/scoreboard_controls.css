@@ -14,7 +14,14 @@ body {
     background-color: black;
 }
 h1, p {
-    font-size: 3rem;
+    font-size: 2rem;
+}
+textarea {
+    margin: 1rem;
+    font-size: 1.2rem;
+    resize: none;
+    width: 95%;
+    background-color: lightgray;
 }
 input, button {
     font-size: 2rem;
