@@ -24,23 +24,31 @@
     <!-- rename timer-container class -->
     <!-- give this div an ID -->
     <div class="timer-container">
-        <div id="home-team-score" class="tile score-tile home-score-tile">
-            00
+        <div class="tile cko-tile">
+            <img src="../images/ckostamp4x6-black-bg.png" 
+                alt="Chicago Knockouts Roller Derby" class="cko-logo">
         </div>
         <div id="home-team-name" class="tile home-logo-tile logo-tile">
             HOME TEAM
             <!-- <img src="../images/prp.png" alt="Punk Rock Punishers" class="logo-image" height="120px"> -->
         </div>
-        <div id="game-segment" class="tile period-tile">
-            PERIOD <span id="period-number">1</span>
-            <!-- <br/> &nbsp;&nbsp;Time: 30:00 -->
+        <div id="home-team-score" class="tile score-tile home-score-tile">
+            00
         </div>
-        <div class="tile game-clock-tile">
-            30:00
+        <div id="away-team-name" class="tile away-logo-tile logo-tile">
+            AWAY TEAM
+            <!-- <img src="../images/cbc.png" alt="Comic Book Crushers" class="logo-image" height="120px"> -->
         </div>
-        <div class="tile cko-tile">
-            <img src="../images/ckostamp4x6-black-bg.png" 
-                alt="Chicago Knockouts Roller Derby" class="cko-logo">
+        <div id="away-team-score" class="tile score-tile away-score-tile">
+            00
+        </div>
+        <div id="game-segment-container" class="tile period-tile">
+            <p id="game-segment" class="game-segment">
+                PERIOD <span id="period-number">1</span>
+            </p>
+            <p class="game-clock">
+                <span id="game-clock-minutes">30</span>:<span id="game-clock-seconds">00</span>
+            </p>
         </div>
         <div class="tile jam-tile">
             <p class="jam-number">
@@ -51,14 +59,10 @@
             </p>
         </div>
         <div class="tile timeout-tile">
-            <span id="timeout">TIME OUT</span>
+            <span id="timeout" data-status="false" style="visibility: hidden">TIME OUT</span>
         </div>
-        <div id="away-team-name" class="tile away-logo-tile logo-tile">
-            AWAY TEAM
-            <!-- <img src="../images/cbc.png" alt="Comic Book Crushers" class="logo-image" height="120px"> -->
-        </div>
-        <div id="away-team-score" class="tile score-tile away-score-tile">
-            00
+        <div id="tbd-tile" class="tile tbd-tile">
+            <!-- TBD -->
         </div>
     </div>
     
@@ -113,15 +117,22 @@
         // and target elements
     </script>
 
-    <!-- Handle incoming updates from server -->
+    <!-- Handle incoming updates from server 
     <script type="text/javascript" src="../js/target_clients/incoming_scoreboard_updates.js">
         // message handlers for incoming updates from scoreboard controls
         // adding sendChat() funcdtion to this file for now
     </script>
+    -->
 
     <!-- Chat Methods between Scoreboard Announcers and Scoreboard Controls -->
     <script type="text/javascript" src="../js/target_clients/chat_methods.js">
         // Chat methods for sending messages
+    </script>
+
+    <script type="text/javascript" src="../js/refresh_check.js"></script>
+    
+    <script type="text/javascript" 
+            src="../js/scoreboard_controls/scoreboard_state_methods.js">
     </script>
 
     <!--

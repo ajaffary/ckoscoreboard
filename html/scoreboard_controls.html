@@ -34,7 +34,9 @@
                 type="button" onclick="sendChat()">
                 Send Message
         </button>
-    </div>    
+    </div>
+    
+    <hr>
 
     <!-- Jam Number -->
     <div id="jam-number-controls">
@@ -81,7 +83,7 @@
     <!-- Time Out -->
     <div id="timeout-controls">
         <p id="timeout-name">Time Out</p>
-        <p id="timeout" data-status="true" style="visibility: visible">TIME OUT</p>
+        <p id="timeout" data-status="false" style="visibility: hidden">TIME OUT</p>
         <p id="timeout-buttons">
             <button type="button" id="timeout-button" 
                     onclick="TimeOut()">
@@ -110,12 +112,14 @@
                     Toggle P1 / P2
             </button>
         </p>
+
         <p id="end-period-1">
-            <!-- End of Period 1 -->
+            <!-- End of Period 1 
             <button type="button" id="end-period-1-button" 
                     onclick="endPeriod()">
                     End of Period 1
             </button>
+            -->
             <!-- Halftime -->
             <button type="button" id="halftime-button" 
                     onclick="halfTime()">
@@ -124,11 +128,12 @@
         </p>
         
         <p id="end-period-2">
-            <!-- End of Period 2 -->
+            <!-- End of Period 2 
             <button type="button" id="end-period-2-button" 
                     onclick="endPeriod()">
                     End of Period 2
             </button>
+            -->
             <!-- Final Score -->
             <button type="button" id="final-score-button"
                     onclick="displayFinalScore()">
@@ -165,6 +170,7 @@
         // Initialize the websocket connection
         // Transmit unique ID
     </script>
+
     <script type="text/javascript" src="../js/source_clients/scoreboard-scores-client.js">
         // Send score updates updates to server
     </script>
@@ -177,7 +183,6 @@
     <script type="text/javascript" src="../js/target_clients/chat_methods.js">
         // Chat methods for sending messages
     </script>
-
 
     <script type="text/javascript">
         // handle incoming chat messages from server
@@ -196,7 +201,12 @@
         };
     </script>
 
-    <hr/>
+    <script type="text/javascript" src="../js/refresh_check.js"></script>
 
+    <script type="text/javascript" 
+            src="../js/scoreboard_controls/scoreboard_state_methods.js">
+    </script>
+
+    <hr/>
 </body>
 </html>

@@ -21,9 +21,6 @@ updateJamNumber.addEventListener('click', () => {
     };
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
-    // no need for messageInput.value to be cleared here
-    // put this with input field below if chat window needed
-    // messageInput.value = '';
 });
 
 

@@ -25,7 +25,7 @@ Still to do:
  * @param {element} teamScore: element that contains team score
  * @returns 
  */
-function updateScore(newScore, teamScore) {
+function updateScore(newScore=0, teamScore=0) {
     if (newScore.toString().length === 1) {
         teamScore.textContent = '0' + newScore.toString();
     }
@@ -44,8 +44,8 @@ function updateScore(newScore, teamScore) {
  * @param {string} increment: amount to be added or subtracted from score
  */
 function addToScore(teamScore, increment) {
-    currentScore = Number(teamScore.textContent);
-    newScore = currentScore + increment;
+    let currentScore = Number(teamScore.textContent);
+    let newScore = currentScore + increment;
     if (newScore <= 0) {
         teamScore.textContent = '00'
     }
@@ -67,7 +67,7 @@ function updateScoreByInput(teamInput, teamScore) {
         window.localStorage.setItem(teamId, teamScore.textContent);
     }
     else {
-        score = updateScore(Number(teamInput.value), teamScore);
+        let score = updateScore(Number(teamInput.value), teamScore);
         window.localStorage.setItem(teamId, score);
     }
     teamInput.value = '';
@@ -136,7 +136,7 @@ function updateJamByInput(jamInput, jamNumber) {
         window.localStorage.setItem(jamId, jamNumber.textContent);
     }
     else {
-        number = updateJam(Number(jamInput.value), jamNumber);
+        let number = updateJam(Number(jamInput.value), jamNumber);
         window.localStorage.setItem(jamId, number);
     }
     jamInput.value = '';
@@ -175,7 +175,7 @@ function updateText(content, element) {
  * function to send time out status
  */
 function timeOutStatus(status) {
-    if (status == true) {
+    if (status == 'true') {
         timeOut.style.visibility = 'visible';
     }
     else {
@@ -225,17 +225,21 @@ resetJamNumber.setAttribute('onclick', 'resetJam(jamInput, jamNumber)');
 const togglePeriodButton = document.getElementById('toggle-period-button');
 togglePeriodButton.setAttribute('onclick', 'togglePeriod()');
 
+/*
 // End of Period 1 button
 const endPeriodOne = document.getElementById('end-period-1-button');
 endPeriodOne.setAttribute('onclick', 'updateText("END OF PERIOD 1", gameSegment)');
+*/
 
 // Halftime button
 const halfTime = document.getElementById('halftime-button');
 halfTime.setAttribute('onclick', 'updateText("HALF TIME", gameSegment)');
 
+/*
 // End of Period 2 Button
 const endPeriodTwo = document.getElementById('end-period-2-button');
 endPeriodTwo.setAttribute('onclick', 'updateText("END OF PERIOD 2", gameSegment)');
+*/
 
 // Display Final Score button
 const finalScore = document.getElementById('final-score-button');
@@ -255,10 +259,10 @@ clearUpdate.setAttribute('onclick', 'updateText(" ", gameSegment)');
 
 // Timeout button
 const timeOutButton = document.getElementById('timeout-button');
-timeOutButton.setAttribute('onclick', 'timeOutStatus(true)');
+timeOutButton.setAttribute('onclick', 'timeOutStatus("true")');
 
 const clearTimeOutButton = document.getElementById('clear-timeout-button');
-clearTimeOutButton.setAttribute('onclick', 'timeOutStatus(false)');
+clearTimeOutButton.setAttribute('onclick', 'timeOutStatus("false")');
 
 const updateTimeOutButton = document.getElementById('update-timeout-button');
 // already set in HTML file

@@ -85,7 +85,7 @@ textarea {
     align-content:center;
     /* border: 2px solid red;*/
 }
-.period-tile, .jam-number, .timeout-tile {
+.game-segment, .jam-number, .timeout-tile {
     font-family: 'Futura Bold';
     font-size: 3rem;
     color: white;
@@ -93,13 +93,13 @@ textarea {
     /* padding: 10px; */
     /* background-color: #000000; */
 }
-.jam-timer {
+.jam-timer, .game-clock {
     margin: auto;
     justify-self: center;
     text-align: center;
     vertical-align: center;;
     font-family: 'Dirty Headline';
-    font-size: 8rem;
+    font-size: 7rem;
     color: white;
     /* border: 2px solid lightblue;*/
 }
@@ -130,7 +130,7 @@ textarea {
     justify-self: center;
     text-align: center;
 }
-.game-clock-tile {
+.tbd-tile {
     grid-area: five;
     justify-self: center;
     text-align: center;

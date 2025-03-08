@@ -19,8 +19,8 @@
 
     <hr/>
 
-    <div id="countdown-container">
-        <p id="countdown">
+    <div id="game-clock-container">
+        <p id="game-clock">
             <span id="game-clock-minutes">30</span>:<span id="game-clock-seconds">00</span>
         </p>
     </div>
@@ -70,10 +70,20 @@
         </p>
     </div>
 
-    <script type="text/javascript" src="../js/scoreboard_controls/game_clock.js">
-        // Create the game clock
+    <script type="text/javascript" src="../js/initialize_client.js">
+        // Initialize the websocket connection
+        // Transmit unique ID
     </script>
 
+    <script type="text/javascript" src="../js/scoreboard_controls/game_clock.js">
+        // Game Clock Controls
+    </script>
+
+    <script type="text/javascript" src="../js/refresh_check.js"></script>
+
+    <script type="text/javascript" 
+            src="../js/scoreboard_controls/scoreboard_state_methods.js">
+    </script>
     <hr/>
 
 </body>

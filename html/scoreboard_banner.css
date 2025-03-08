@@ -34,13 +34,13 @@ body {
     grid-template-columns: 1.5fr 0.25fr 2.75fr 0.5fr 1fr 0.5fr 2.75fr 0.25fr 1.5fr ;
     align-items: center;
     column-gap: 20px;
-    height: 120px;
+    height: 120px; 
     /* border: 2px solid yellow; */
     background-color: #000000;
 }
 .tile {
-    height: 100px;
-    padding: 10px;
+    height: 100% ;
+    padding: 5px;
     align-content: center;
     text-align: center;
 }
@@ -58,16 +58,37 @@ body {
     font-size: 2rem;
     color: white;
     margin: auto;
+    padding: auto;
     /* padding: 10px; */
     /* background-color: #000000; */
 }
+.jam-number, .game-segment {
+    height: 50%;
+    margin: -20px;
+    padding: auto;
+    /* border: 2px solid lightblue;*/
+}
+.jam-timer, .game-clock {
+    height: 50%;
+    justify-self:center;
+    text-align: center;
+    align-content: baseline;
+    font-family: "Dirty Headline";
+    font-size: 4rem;
+    color: white;
+    margin: auto;
+    padding: 0px;
+    /* border: 2px solid lightblue;*/
+}
+
+/* grid items */
 .period-tile {
     grid-column: 1;
     grid-row: 1;
     justify-self: center;
     /* border: 2px solid pink;*/
 }
-.game-clock-tile {
+.tbd-tile {
     grid-column: 2;
     grid-row: 1;
     justify-self: center;
@@ -100,7 +121,9 @@ body {
     justify-self: center;
     height: 120px;
     width: 100%;
-    /* border: 2px solid green; */
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    /* border: 2px solid green; */  
 }
 .away-score-tile {
     grid-column: 6;
@@ -127,27 +150,7 @@ body {
 .jam-tile {
     grid-column: 9;
     grid-row: 1;
-    justify-self: center;
-    margin: 0px;
-    padding: 0px;
-    /* border: 2px solid lightblue;*/
-}
-.jam-number {
-    height: 50%;
-    margin: -20px;
-    padding: auto;
-    /* border: 2px solid lightblue;*/
-}
-.jam-timer {
-    height: 50%;
-    justify-self: center;
-    text-align: center;
-    align-content: baseline;
-    font-family: "Dirty Headline";
-    font-size: 4rem;
-    color: white;
-    margin: auto;
-    padding: 0px;
+    justify-self: center; 
     /* border: 2px solid lightblue;*/
 }
 

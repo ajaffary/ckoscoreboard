@@ -12,6 +12,8 @@
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
+const cors = require('cors');
+const path = require('path');
 
 const wsaddr = { 
     localhost: 'localhost',
@@ -22,6 +24,11 @@ const wsaddr = {
 // create express app
 const app = express();
 
+// use CORS
+app.use(cors());
+
+// server static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // create http server
 const server = http.createServer(app);
@@ -31,6 +38,7 @@ const wss = new WebSocket.Server({ server });
 
 // create a Map to store connected clients with unique client ids
 const clients = new Map(); 
+const readyClients = new Set();
 
 const chatClients = ['scoreboard-controls', 'scoreboard-announcers'];
 const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers'];
@@ -56,10 +64,15 @@ wss.on('connection', (ws) => {
         if (message.type === 'initial') {
             // this means the scoreboard client is sending its ID
             const clientId = message.senderId;
+            ws.clientId = clientId;
             // update clients Map with new client ID
             clients.set(clientId, ws);
             console.log(`Client ${clientId} has connected.`);
             // console.log(`List of all connected clients: ${clients}`);
+        }
+        else if (message.type == 'ready') {
+            readyClients.add(message.senderId);
+            console.log(`Client ${message.senderId} is ready`);
         }
         // if message type is 'homeSkaterName'
         else if (message.type === 'homeSkaterName') {
@@ -116,6 +129,8 @@ wss.on('connection', (ws) => {
         }
         // if message type is 'chat'
         else if (message.type === 'chat') {
+            // this means the scoreboard-controls and scoreboard-announcers 
+            // clients are sending a chat message
             console.log(`Received ${message.type}`);
             const targetClient = clients.get(message.targetId);
             // console.log(targetClient);
@@ -131,29 +146,51 @@ wss.on('connection', (ws) => {
                 targetClient.send(JSON.stringify(messageToTarget));
                 console.log(`Message sent to ${targetClient}: ${messageToTarget}`);
             } else {
-                ws.send(JSON.stringify({ type: 'error', message: 'Target client not available' }));
+                console.log(`Target ${targetClient} client not available`);
+                /*
+                ws.send(JSON.stringify(
+                    { 
+                        type: 'error', 
+                        message: `Target ${targetClient} client not available` 
+                    }));
+                */
             }
-            // insert code here
-            // this means the scoreboard-controls and scoreboard-announcers 
-            // clients are sending a chat message
         }
         // if message type is 'error'
         else if (message.type === 'error') {
             // insert code here
             // this means the server is sending an error message
+            // what to do here?
         }
     });
 
     // handle client disconnect
-    ws.on('close', () => {
-        console.log('Client disconnected');
-        clients.delete(ws);
+    ws.on('close', (data) => {
+        const clientId = ws.clientId;
+        if (clientId) {
+            console.log(`Client ${clientId} disconnected`);
+            clients.delete(clientId);
+            readyClients.delete(clientId);
+        } else {
+            console.log(
+                'A client disconnected without sending an initial message');
+        }
     });
 }); 
 
 // Main express route to check if server is running
 app.get('/', (req, res) => {
     res.send('WebSocket server is running');
+});
+
+// check which host to use
+app.get('/wsaddr', (req, res) => {
+    res.json(wsaddr);
+});
+
+// Endpoint to get ready clients
+app.get('/readyClients', (req, res) => {
+    res.json(Array.from(readyClients));
 });
 
 // Start the server

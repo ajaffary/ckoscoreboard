@@ -1,12 +1,27 @@
+// ignore this file for now
+// JS cannot handle importing
+
 // these message handler methods are shared between scoreboard_banner and 
 // scoreboard_announcer clients
 
+/* 
 // handle incoming messages from server
 ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
     console.log(`Message received: ${data}`);
     console.log(`Message type: ${data.type}`);
-    if (data.type === 'scoreUpdate') {
+    handleMessage(data);
+};
+*/
+
+function handleMessage(data) {
+    if (data.type === 'gameClock') {
+        // update game clock
+        // redo this later to only update seconds
+        // and only update minutes when seconds = 0
+        gameClockMinutes.textContent = data.content.minutes;
+        gameClockSeconds.textContent = data.content.seconds;
+    } else if (data.type === 'scoreUpdate') {
         // update both team scores
         homeTeamScore.textContent = data.content.home;
         awayTeamScore.textContent = data.content.away;
@@ -39,4 +54,4 @@ ws.onmessage = (event) => {
     } else if (data.type === 'error') {
         alert(data.message);
     } 
-};
+}
