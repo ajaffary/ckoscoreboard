@@ -54,7 +54,7 @@
             <p class="jam-number">
                 <span id="jam">JAM</span> <span id="jam-number">X</span>
             </p>
-            <p class="jam-timer">
+            <p id="jam-timer" class="jam-timer">
                 1:00
             </p>
         </div>
@@ -89,26 +89,9 @@
     </script>
 
     <!-- WS604 clock timer connection -->
-    <script type="text/javascript">
-        const addr_cko = '192.168.1.200';
-        const addr_ws = '192.168.4.1';
-        // use instead of window.location.hostname
-
-        window.onload=function(){ 
-            let dis = "";
-            // create a new WebSocket connection to clock's websocket server
-            const Socket = new WebSocket('ws://' + addr_cko + ':81/');
-            
-            // a new message event occurs every time clock element is updated
-            Socket.onmessage = function(event){
-                // get original message
-                dis = event.data;
-                console.log(event.data);
-                // update jam-timer element
-                document.getElementById("jam-timer").innerHTML = dis;
-            }
-        }
-      </script>
+    <script type="text/javascript" src="../js/scoreboard_controls/ws604.js">
+        // used in both scoreboard-banner and scoreboard-announcers
+    </script>
 
     <!-- Scoreboard Elements to be Updated -->
     <script type="text/javascript" src="../js/scoreboard_controls/shared_elements.js">

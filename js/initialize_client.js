@@ -21,7 +21,7 @@ const wsaddr = {
     cko: '192.168.1.157',
 };
 
-const hostname = wsaddr.home;
+const hostname = wsaddr.cko;
 
 // new Websocket client
 let ws;
@@ -33,7 +33,7 @@ let clientIdElement = document.querySelector('title');
 let clientId = clientIdElement.id;
 
 const targetClients = ['scoreboard-banner', 'scoreboard-announcers']; 
-
+const sourceClients = ['scoreboard-controls', 'game-clock'];
 // target client messages
 // trying to keep this in a separate file and javascript is fucking off
 function handleMessage(data) {
@@ -74,7 +74,7 @@ function handleMessage(data) {
         const incomingChat = document.getElementById('incoming-chat');
         incomingChat.value += `${data.senderId}: ${data.content}\n`;
     } else if (data.type === 'error') {
-        alert(data.message);
+        // alert(data.message);
     } 
 }
 
@@ -94,6 +94,7 @@ function connectWebSocket() {
         const readyMessage = {
             type: 'ready',
             senderId: clientId,
+            // targetId: sourceClients,
         };
         ws.send(JSON.stringify(readyMessage));
         console.log('Sent ready message to server');
@@ -113,6 +114,26 @@ function connectWebSocket() {
             sendUpdateWhenReady(restoreGameClock);
         };
     };
+
+    /* 
+    // handle the message type = restoreStates
+    if (sourceClients.includes(clientId)) {
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if (data.type == 'restoreStates') {
+                for (sourceClient of data.targetId) {
+                    if (sourceClient == 'scoreboard-controls') {
+                        // scoreboard-controls:  restoreSourceStates()
+                        sendUpdateWhenReady(restoreSourceStates);
+                    } else if (sourceClient == 'game-clock') {
+                        // game-clock: restoreGameClock()
+                        sendUpdateWhenReady(restoreGameClock);
+                    };    
+                }
+            }
+        };
+    }
+    */
 
     if (targetClients.includes(clientId)) {
         // handle incoming messages from server
@@ -141,7 +162,6 @@ function connectWebSocket() {
     
     ws.onerror = (error) => {
         console.error('Websocket error:', error);
-
         // close connection before attempting to reconnect after an error
         ws.close();
     };

@@ -21,6 +21,8 @@ const wsaddr = {
     cko: '192.168.1.157',
 };
 
+const hostname = wsaddr.localhost;
+
 // create express app
 const app = express();
 
@@ -42,6 +44,7 @@ const readyClients = new Set();
 
 const chatClients = ['scoreboard-controls', 'scoreboard-announcers'];
 const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers'];
+const scoreSourceClients = ['scoreboard-controls', 'game-clock'];
 const messageTypes = [
     'scoreUpdate',
     'homeTeamUpdate',
@@ -73,6 +76,22 @@ wss.on('connection', (ws) => {
         else if (message.type == 'ready') {
             readyClients.add(message.senderId);
             console.log(`Client ${message.senderId} is ready`);
+            /*
+            // Notify source clients to send restoreScores
+            if (scoreTargetClients.includes(message.senderId)) {
+                for (let sourceClient of scoreSourceClients) {
+                    const sourceClient = clients.get(client);
+                    if (sourceClient && sourceClient.readyState === WebSocket.OPEN) {    
+                        const notifyMessage = {
+                            type: 'restoreStates',
+                            senderId: message.senderId,
+                            targetId: sourceClient,
+                        };
+                        sourceClient.send(JSON.stringify(notifyMessage));
+                    }
+                }
+            }
+            */
         }
         // if message type is 'homeSkaterName'
         else if (message.type === 'homeSkaterName') {
@@ -196,5 +215,5 @@ app.get('/readyClients', (req, res) => {
 // Start the server
 const PORT = 3000;
 server.listen(PORT, () => {
-    console.log(`Server running on http://${wsaddr.localhost}:${PORT}`);
+    console.log(`Server running on http://${hostname}:${PORT}`);
 });

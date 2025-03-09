@@ -113,6 +113,19 @@ function restoreSourceStates() {
     restoreGameSegment();
 }
 
+/*
+function readyMessage(data) {
+    if (data.type === 'ready') {
+        restoreSourceStates();
+        restoreGameClock();
+    } 
+}
+*/
+
+
+
+
+
 // save above data to localStorage
 // use setItem() method
 // https://medium.com/@joeylee08/localstorage-101-persisting-browser-data-on-the-client-694cea0981b3
