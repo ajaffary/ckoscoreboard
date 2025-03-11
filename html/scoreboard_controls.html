@@ -186,6 +186,11 @@
 
     <script type="text/javascript">
         // handle incoming chat messages from server
+        // handle incoming 'ready' messages from server
+        // with specific client ID
+        // note:  issue with providing client ID is all update
+        // methods go to both targets by default
+        // will an update 
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
             console.log(`Message received: ${data}`);

@@ -4,6 +4,8 @@
 // create sendChat callback function to handle outgoing chat message
 function sendChat() {
     incomingChat.value += `${clientId}: ${outgoingChat.value}\n`;
+    // need to update this to add to localStorage when message is
+    // received
     localStorage.setItem('chatMessages', incomingChat.value);
 }
 

@@ -76,22 +76,24 @@ wss.on('connection', (ws) => {
         else if (message.type == 'ready') {
             readyClients.add(message.senderId);
             console.log(`Client ${message.senderId} is ready`);
-            /*
+    
             // Notify source clients to send restoreScores
             if (scoreTargetClients.includes(message.senderId)) {
+                console.log('target client is ready');
+                // now communicate this to the source clients
                 for (let sourceClient of scoreSourceClients) {
-                    const sourceClient = clients.get(client);
-                    if (sourceClient && sourceClient.readyState === WebSocket.OPEN) {    
+                    const client = clients.get(sourceClient);
+                    if (client && client.readyState === WebSocket.OPEN) {    
                         const notifyMessage = {
                             type: 'restoreStates',
                             senderId: message.senderId,
-                            targetId: sourceClient,
+                            targetId: sourceClient
                         };
-                        sourceClient.send(JSON.stringify(notifyMessage));
+                        client.send(JSON.stringify(notifyMessage));
+                        console.log(`restoreState message sent to ${sourceClient}`);
                     }
                 }
             }
-            */
         }
         // if message type is 'homeSkaterName'
         else if (message.type === 'homeSkaterName') {
@@ -166,13 +168,12 @@ wss.on('connection', (ws) => {
                 console.log(`Message sent to ${targetClient}: ${messageToTarget}`);
             } else {
                 console.log(`Target ${targetClient} client not available`);
-                /*
+                
                 ws.send(JSON.stringify(
                     { 
                         type: 'error', 
                         message: `Target ${targetClient} client not available` 
-                    }));
-                */
+                    }));                
             }
         }
         // if message type is 'error'

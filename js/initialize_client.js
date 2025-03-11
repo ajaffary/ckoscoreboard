@@ -21,12 +21,12 @@ const wsaddr = {
     cko: '192.168.1.157',
 };
 
-const hostname = wsaddr.cko;
+const hostname = wsaddr.localhost;
 
 // new Websocket client
 let ws;
 let reconnectTimeout;
-const shouldReconnect = true;
+let shouldReconnect = true;
 
 // get ID from title element
 let clientIdElement = document.querySelector('title');
@@ -74,7 +74,7 @@ function handleMessage(data) {
         const incomingChat = document.getElementById('incoming-chat');
         incomingChat.value += `${data.senderId}: ${data.content}\n`;
     } else if (data.type === 'error') {
-        // alert(data.message);
+        alert(data.message);
     } 
 }
 
@@ -99,44 +99,51 @@ function connectWebSocket() {
         ws.send(JSON.stringify(readyMessage));
         console.log('Sent ready message to server');
 
-        // execute restore functions for different clients
+        // execute restore functions for target clients immediately
         if (targetClients.includes(clientId)) {
             // scoreboard-bannner: restoreTeamNames()
             // scoreboard-announcers: restoreTeamNames()
             if (localStorage.home) {
                 restoreTeamNames();
             }
-        } else if (clientId == 'scoreboard-controls') {
+        } 
+
+        /* 
+        // modify to do this only after target clients communicate 'ready'
+        // no, I need to do this incase source clients also refresh
+        */
+        else if (clientId == 'scoreboard-controls') {
             // scoreboard-controls:  restoreSourceStates()
             sendUpdateWhenReady(restoreSourceStates);
         } else if (clientId == 'game-clock') {
             // game-clock: restoreGameClock()
             sendUpdateWhenReady(restoreGameClock);
         };
+        
     };
 
-    /* 
-    // handle the message type = restoreStates
+    // handle incoming messages for source clients
+    // the message type = restoreStates
+
     if (sourceClients.includes(clientId)) {
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
             if (data.type == 'restoreStates') {
-                for (sourceClient of data.targetId) {
-                    if (sourceClient == 'scoreboard-controls') {
-                        // scoreboard-controls:  restoreSourceStates()
-                        sendUpdateWhenReady(restoreSourceStates);
-                    } else if (sourceClient == 'game-clock') {
-                        // game-clock: restoreGameClock()
-                        sendUpdateWhenReady(restoreGameClock);
-                    };    
-                }
+                console.log(`Message received: ${data}`);
+                console.log(`Message type: ${data.type}`);
+                if (data.targetId == 'scoreboard-controls') {
+                    // scoreboard-controls:  restoreSourceStates()
+                    sendUpdateWhenReady(restoreSourceStates);
+                } 
+                else if (data.targetId == 'game-clock') {
+                    // game-clock: restoreGameClock()
+                    sendUpdateWhenReady(restoreGameClock);
+                };
             }
         };
-    }
-    */
-
+    }    
+    // handle all incoming messages for target clients
     if (targetClients.includes(clientId)) {
-        // handle incoming messages from server
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
             console.log(`Message received: ${data}`);
@@ -173,6 +180,16 @@ function stopReconnecting() {
     clearTimeout(reconnectTimeout);
 }
 
+
+// Function to fetch ready clients
+function fetchReadyClients() {
+    return new Promise((resolve, reject) => {
+        fetch(`http://${hostname}:3000/readyClients`)
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+    });
+}
 // Function to send updates to target clients
 /**
  * decorator function that checks if target clients are 'ready'
@@ -180,24 +197,18 @@ function stopReconnecting() {
  * @param {} restoreFunction 
  */
 function sendUpdateWhenReady(restoreFunction) {
-    // Check if target clients are ready
-    fetch(`http://${hostname}:3000/readyClients`)
-        .then(response => response.json())
-        .then(readyClients => {
-            // separate both clients out so banner always receives updates first
-            for (let client of targetClients) {
-                if (readyClients.includes(client)) {
-                    restoreFunction();
-                    //ws.send(JSON.stringify(message));
-                    console.log(`Update sent to ${client}`);
-                } else {
-                    console.log(`${client} client is not ready`);
-                }    
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching ready clients:', error);
-        });
+    // separate both clients out so banner always receives updates first
+    for (let client of targetClients) {
+        // if (readyClients.includes(client)) {
+            restoreFunction();
+            console.log(`Update sent to ${client}`);
+        /* 
+        } 
+        else {
+            console.log(`${client} client is not ready`);
+        }  
+        */  
+    }
 }
 
 // Initial connection
