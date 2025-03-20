@@ -6,7 +6,7 @@
     --hh-color: #29b24c;
     --prp-color: #a14b9c;
     --rr-color: #ec1f27;
-    --logo-bg-color: #ededed;
+    --logo-bg-color: black; /* #ededed; */
     --text-color: white;
 }
 
@@ -40,12 +40,12 @@ body {
 }
 .tile {
     height: 100% ;
-    padding: 5px;
+    padding: 0px;
     align-content: center;
     text-align: center;
 }
 .score-tile {
-    font-family: "Dirty Headline";
+    font-family: 'Futura Bold';
     font-size: 5.5rem;
     color: white;
     align-content:start;
@@ -64,8 +64,8 @@ body {
 }
 .jam-number, .game-segment {
     height: 50%;
-    margin: -20px;
-    padding: auto;
+    margin: -15px;
+    padding-top: 10px;
     /* border: 2px solid lightblue;*/
 }
 .jam-timer, .game-clock {
@@ -73,11 +73,11 @@ body {
     justify-self:center;
     text-align: center;
     align-content: baseline;
-    font-family: "Dirty Headline";
-    font-size: 4rem;
+    font-family: 'Futura Bold';
+    font-size: 3.2rem;
     color: white;
     margin: auto;
-    padding: 0px;
+    padding-bottom: 10px;
     /* border: 2px solid lightblue;*/
 }
 
@@ -137,7 +137,7 @@ body {
     justify-self: start;
     text-align: center;
     vertical-align: center;
-    padding: 10px;
+    /* padding: 10px; */
     height: 124px;
     /* border: 2px solid magenta; */
 }
@@ -157,14 +157,16 @@ body {
 
 /* Team Logos */
 .logo-image {
-    padding-bottom: 15px;
+    padding-bottom: 0px;
     /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
-    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 1px black);
+    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px white);
+    /* filter: blur(0px) saturate(200%) drop-shadow(1px 2px 0px black);*/
     max-height: 120px;
+    /* border: 0px solid green; */
 }
 .logo-tile {
     font-size: 2rem;
-    background-color: #ededed;
+    background-color: var(--logo-bg-color);
     /* padding-bottom: 15px;*/
     align-self: center;
     max-width: 200px;

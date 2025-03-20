@@ -80,8 +80,8 @@ textarea {
 }
 .score-tile {
     /* width: 100%;*/
-    font-family: "Dirty Headline";
-    font-size: 12rem;
+    font-family: 'Futura Bold';
+    font-size: 10rem;
     color: white;
     align-content:center;
     /* border: 2px solid red;*/
@@ -99,8 +99,8 @@ textarea {
     justify-self: center;
     text-align: center;
     vertical-align: center;;
-    font-family: 'Dirty Headline';
-    font-size: 7rem;
+    font-family: 'Futura Bold';
+    font-size: 5rem;
     color: white;
     /* border: 2px solid lightblue;*/
 }
