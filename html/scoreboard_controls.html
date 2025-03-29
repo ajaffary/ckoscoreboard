@@ -38,6 +38,61 @@
     
     <hr>
 
+    <!-- Game Clock -->
+    <div id="game-clock-container">
+        <p id="game-clock-name">Game Clock</p>
+        <p id="game-clock">
+            <span id="game-clock-minutes">30</span>:<span id="game-clock-seconds">00</span>
+        </p>
+    </div>
+
+    <div id="game-clock-controls">
+        <p id="game-clock-start-stop-reset">
+            <button type="button" id="start-game-clock" 
+                    onclick="startGameClock()">
+                    Start Game Clock
+            </button>
+            <button type="button" id="stop-game-clock" 
+                    onclick="stopGameClock()">
+                    Stop Game Clock
+            </button>
+            <button type="button" id="reset-game-clock" 
+                    onclick="resetGameClock()">
+                    Reset Game Clock
+            </button>
+        </p>
+        <p id="game-clock-inputs">
+            <label for="game-clock-minutes-input">MIN</label>
+            <input 
+                type="number" 
+                class="game-clock" 
+                name="game-clock-minutes-input" 
+                maxlength="2em" 
+                id="game-clock-minutes-input" 
+                min="0" 
+                max="60"
+                aria-label="Game Clock Minutes Input" 
+                value="30">
+            <label for="game-clock-seconds-input">SEC</label>
+            <input 
+                type="number" 
+                class="game-clock" 
+                name="game-clock-seconds-input" 
+                maxlength="2em" 
+                id="game-clock-seconds-input" 
+                min="00" 
+                max="59"
+                aria-label="Game Clock Seconds Input" 
+                value="0">
+            <button type="button" id="update-game-clock-button" 
+                    onclick="updateGameClock()">
+                    Update Game Clock
+            </button>
+        </p>
+    </div>
+
+    <hr />
+
     <!-- Jam Number -->
     <div id="jam-number-controls">
         <p id="jam-number-name">Jam Number</p>
@@ -169,6 +224,10 @@
     <script type="text/javascript" src="../js/initialize_client.js">
         // Initialize the websocket connection
         // Transmit unique ID
+    </script>
+
+    <script type="text/javascript" src="../js/scoreboard_controls/game_clock.js">
+        // Game Clock Controls
     </script>
 
     <script type="text/javascript" src="../js/source_clients/scoreboard-scores-client.js">

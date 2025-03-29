@@ -31,7 +31,7 @@ let time = startMinutes * 60;
 // this is no longer needed here since i'm updating the minutes and seconds 
 // separately
 // this is created in shared_elements.js
-const gameClock = document.getElementById('game-clock');
+// const gameClock = document.getElementById('game-clock');
 
 // not sure what to do with this yet
 // wondering if this will persist after disconnect/browser refresh
@@ -43,10 +43,10 @@ let clock = {
 // code below from Copilot
 
 // minutes span element
-const gameClockMinutes = document.getElementById('game-clock-minutes');
+//const gameClockMinutes = document.getElementById('game-clock-minutes');
 
 // seconds span element
-const gameClockSeconds = document.getElementById('game-clock-seconds');
+// ßconst gameClockSeconds = document.getElementById('game-clock-seconds');
 
 /**
  * updates clock object

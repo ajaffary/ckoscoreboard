@@ -1,5 +1,5 @@
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 :root {
     --cbc-color: #23a0da;
@@ -98,7 +98,7 @@ textarea {
     margin: auto;
     justify-self: center;
     text-align: center;
-    vertical-align: center;;
+    vertical-align: center;
     font-family: 'Futura Bold';
     font-size: 5rem;
     color: white;
@@ -149,12 +149,15 @@ textarea {
 .period-tile {
     grid-area: seven;
     justify-self: center;
+    margin: auto;
+    padding-top: 10px;
     /* border: 2px solid pink;*/
 }
 .jam-tile {
     grid-area: eight;
+    padding-top: 10px;
     justify-self: center;
-    /* border: 2px solid lightblue; */
+    /* border: 2px solid lightblue;*/
 }
 .timeout-tile {
     grid-area: nine; 

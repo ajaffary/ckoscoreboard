@@ -21,7 +21,7 @@ const wsaddr = {
     cko: '192.168.1.157',
 };
 
-const hostname = wsaddr.localhost;
+const hostname = wsaddr.cko;
 
 // new Websocket client
 let ws;
@@ -160,7 +160,7 @@ function connectWebSocket() {
             if (targetClients.includes(clientId)) {
                 reconnectTimeout = setTimeout(connectWebSocket, 2000);
             }
-            // source clients reconnect every 2.5 seconds
+            // source clients reconnect every 3 seconds
             else {
                 reconnectTimeout = setTimeout(connectWebSocket, 3000);
             }    
@@ -182,6 +182,7 @@ function stopReconnecting() {
 
 
 // Function to fetch ready clients
+// this is useless
 function fetchReadyClients() {
     return new Promise((resolve, reject) => {
         fetch(`http://${hostname}:3000/readyClients`)
