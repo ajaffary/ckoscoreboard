@@ -39,3 +39,18 @@ hr {
 .score {
     width: 3em;
 }
+
+#clockRC, #rc {
+    text-align: center;
+}
+
+#jam-timer {
+    font-size: 4rem;
+    font-family: 'Futura Bold';
+}
+
+@media (max-width: 450px) {
+    body {
+        max-width: 400px
+    }
+}
