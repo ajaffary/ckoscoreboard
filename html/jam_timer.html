@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)http://192.168.1.200/rc -->
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="scoreboard_controls.css">
+      <link rel="stylesheet" href="fonts.css">
+      <title id="jam-timer-controls">WS604 RemoteController</title>
+      <script type="text/javascript" src="../js/scoreboard_controls/ws604.js">
+         // connect to ws604 clock and get timer data
+      </script>
+  </head>
+  <body>
+   <h1 id="clockRC">Jam Timer Controls</h1>
+   <div id="rc">
+    <p id="jam-timer">&nbsp;</p>
+    <!-- 
+    <div>
+        <input type="button" value="Mute" id="key0" onclick="onclicknum(57885)">
+        <input type="button" value="ON/OFF" id="key2" onclick="onclicknum(41565)">
+    </div>
+    
+    <div>
+        <input type="button" value="1" onclick="onclicknum(12495)">
+        <input type="button" value="2" onclick="onclicknum(6375)">
+        <input type="button" value="3" onclick="onclicknum(31365)">
+    </div>
+    <div>
+        <input type="button" value="4" onclick="onclicknum(4335)">
+        <input type="button" value="5" onclick="onclicknum(14535)">
+        <input type="button" value="6" onclick="onclicknum(23205)">
+    </div>
+    <div>
+        <input type="button" value="7" onclick="onclicknum(17085)">
+        <input type="button" value="8" onclick="onclicknum(19125)">
+        <input type="button" value="9" onclick="onclicknum(21165)">
+    </div>
+    <div>
+        <input type="button" value="&lt;-" onclick="onclicknum(25245)">
+        <input type="button" value="0" onclick="onclicknum(26775)">
+        <input type="button" value=":" id="key4" onclick="onclicknum(45135)">
+    </div>
+    <input type="button" value="M2" id="key1" onclick="onclicknum(45645)">
+    <input type="button" value="M4" id="key1" onclick="onclicknum(59415)">
+    <div>
+        <input type="button" value="Mode-" onclick="onclicknum(765)">
+        <input type="button" value="12/24" onclick="onclicknum(8925)">
+        <input type="button" value="Num-" onclick="onclicknum(36975)">
+    </div>
+    <div>
+        <input type="button" value="Mode+" onclick="onclicknum(49725)">
+        
+        <input type="button" value="Num+" onclick="onclicknum(43095)">
+    </div>
+    <div id="logo"> West Ocean</div>
+    <form action="http://192.168.1.200/" method="POST" id="index"></form>
+    <div>
+        <button type="submit" name="submit" form="index">Back to Main Page</button>
+    </div>
+
+    -->
+    <p id="clock-button-container">
+        <input type="button" value="Clock" id="key1" onclick="onclicknum(57375)"/>
+    </p>
+
+    <p id="reset-timer-button-container">
+        <input type="button" value="Reset Timer" id="key2" onclick="onclicknum(22695)"/>
+    </p>
+
+    <p id="play-pause-button-container">
+        <input type="button" value="Play/Pause" id="key3" onclick="onclicknum(39015)"/>
+    </p>
+    
+   </div>
+   <script type="text/javascript" src="../js/initialize_client.js">
+      // Initialize the websocket connection
+      // Transmit unique ID
+   </script>
+   <script type="text/javascript" src="clock_data_ws.js"></script>
+  
+   </body>
+</html>
