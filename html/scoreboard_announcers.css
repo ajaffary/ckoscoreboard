@@ -6,7 +6,8 @@
     --hh-color: #29b24c;
     --prp-color: #a14b9c;
     --rr-color: #ec1f27;
-    --logo-bg-color: #ededed;
+    --cko-gold: #b59c42;
+    --logo-bg-color: black; /* #ededed; */
     --text-color: white;
 }
 
@@ -168,7 +169,8 @@ textarea {
 .logo-image {
     padding-bottom: 5px;
     /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
-    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 1px black);
+    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px white);
+    /* filter: blur(0px) saturate(200%) drop-shadow(2px 2px 1px black); */
     max-width: 250px;
     max-height: 200px;
 }
@@ -176,7 +178,7 @@ textarea {
     max-width: 250px;
 }
 .logo-tile {
-    background-color: #ededed;
+    background-color: var(--logo-bg-color);
     /* padding-bottom: 15px;*/
     align-self: center;
     border-radius: 4px;

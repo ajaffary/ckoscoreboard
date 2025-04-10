@@ -43,7 +43,7 @@ const clients = new Map();
 const readyClients = new Set();
 
 const chatClients = ['scoreboard-controls', 'scoreboard-announcers'];
-const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers'];
+const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers', 'flip-clock-test-client'];
 const scoreSourceClients = ['scoreboard-controls', 'game-clock'];
 const messageTypes = [
     'scoreUpdate',
@@ -53,6 +53,7 @@ const messageTypes = [
     'gameSegment',
     'gameClock',
     'timeOut',
+    'flipClock'
 ]
 
 // on a new connection, server handles incoming websocket events
@@ -125,9 +126,8 @@ wss.on('connection', (ws) => {
         // check for valid message type
         else if (messageTypes.includes(message.type)) {
             console.log(`Received ${message.type}`);
-            // this means the scoreboard-scores client is sending a score update 
-            // for both teams
-            // send the score update to scoreboard-banner client
+            // this means the scoreboard-controls client is sending a score update 
+            // send the update to scoreboard-banner client
             // and to scoreboard-announcers client
             for (let client of scoreTargetClients) {
                 const targetClient = clients.get(client);

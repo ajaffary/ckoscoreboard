@@ -8,14 +8,12 @@ This file contains functions to LOCALLY update:
 - both scores
 - jam number
 - game segment
+- game clock timer
+- timeout message
 
 And (some) variables to access:
 - Elements containing the data
 - Buttons to change the data and/or send the updates to websockets server
-
-Still to do:
-- add game clock timer
-- add timeout timer
 
 */
 

@@ -15,28 +15,29 @@ function connectToJamTimer() {
         
         // a new message event occurs every time clock element is updated
         Socket.onmessage = (event) => {
-            // https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event
-            // no unique identifying information from below
-            console.log(`event origin: ${event.origin}`);
-            console.log(`event source: ${event.source}`);
-            console.log(`event lastEventId: ${event.lastEventId}`);
-            console.log(JSON.stringify(event));
-            // https://developer.mozilla.org/en-US/docs/Web/API/Event
-            // perhaps a way to get identifying information if 
-            // the event was sent from play/pause button
-            console.log(`event type: ${event.type}`);
             // get original message
-            dis = event.data;
+            display = event.data;
             // unique data:  when jam timer begins, data is 01:00
+            // when jam timer hits play, data is two digits xx
             // when jam timer hits pause, data is :xx rather than xx
             console.log(event.data);
             // update jam-timer element
             if (event.data == "01:00") {
-                console.log("Timer START")
+                // this means clock has been reset to 1:00
+                // use this to activate clear clock function
+                console.log("Timer RESET")
             } else if (event.data[0] == ":") {
+                // this means timer is paused
+                // use this to activate stop clock function
                 console.log("Timer STOP")
+            } else if (event.data.length() == 2) {
+                // this means clock is ticking
+                // timer only sends two digits
+                // could set condition event.data == "59"
+                // and activate start clock function
+                console.log("Timer COUNTDOWN")
             }
-            document.getElementById("jam-timer").innerHTML = dis;
+            document.getElementById("jam-timer").innerHTML = display;
         }
         Socket.onclose = (event) => {
             console.log('Jam Timer Websocket connection closed:', event);

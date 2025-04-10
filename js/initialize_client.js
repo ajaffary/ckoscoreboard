@@ -21,7 +21,7 @@ const wsaddr = {
     cko: '192.168.1.157',
 };
 
-const hostname = wsaddr.cko;
+const hostname = wsaddr.home;
 
 // new Websocket client
 let ws;
@@ -43,7 +43,12 @@ function handleMessage(data) {
         // and only update minutes when seconds = 0
         gameClockMinutes.textContent = data.content.minutes;
         gameClockSeconds.textContent = data.content.seconds;
-    } else if (data.type === 'scoreUpdate') {
+    } else if (data.type === 'flipClock') {
+        // control flip clock
+        // execute function defined by data.content
+        console.log(data.content);
+    }
+    else if (data.type === 'scoreUpdate') {
         // update both team scores
         homeTeamScore.textContent = data.content.home;
         awayTeamScore.textContent = data.content.away;

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Headliner No. 45';
+    src: url('HeadlinerNo45.woff2') format('woff2'),
+        url('HeadlinerNo45.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

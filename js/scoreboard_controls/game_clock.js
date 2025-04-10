@@ -163,7 +163,6 @@ updateGameClockButton.setAttribute(
     'updateGameClockByInput(gameClockMinutesInput.value, gameClockSecondsInput.value)'
 );
 
-
 // so logic is:
 // add mutation observer to the timer
 // mutation callback function sends a websocket message to the scoreboard server
@@ -313,3 +312,59 @@ resetGameClockButton.addEventListener('click', function() {
 // should send a message.
 
 // need to diagnose this behavior
+
+
+// new event listeners for flip clock
+// click start game clock button
+// send a message that tells flip clock client to run startClockFunction
+startGameClockButton.addEventListener('click', () => {
+    // construct flip clock start message
+    const message = {
+        type: 'flipClock',
+        senderId: clientId,
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        content: 'start',
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+    // no need for messageInput.value to be cleared here
+    // put this with input field below if chat window needed
+    // messageInput.value = '';
+});
+
+// click stop game clock button
+// send a message that tells flip clock client to run stopClockFunction
+stopGameClockButton.addEventListener('click', () => {
+    // construct flip clock start message
+    const message = {
+        type: 'flipClock',
+        senderId: clientId,
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        content: 'stop',
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+    // no need for messageInput.value to be cleared here
+    // put this with input field below if chat window needed
+    // messageInput.value = '';
+});
+
+// click reset game clock button
+// send a message that tells flip clock client to run clearClockFunction
+resetGameClockButton.addEventListener('click', () => {
+    // construct flip clock start message
+    const message = {
+        type: 'flipClock',
+        senderId: clientId,
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        content: 'clear',
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+    // no need for messageInput.value to be cleared here
+    // put this with input field below if chat window needed
+    // messageInput.value = '';
+});
