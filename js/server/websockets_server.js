@@ -43,7 +43,7 @@ const clients = new Map();
 const readyClients = new Set();
 
 const chatClients = ['scoreboard-controls', 'scoreboard-announcers'];
-const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers', 'flip-clock-test-client'];
+const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers']; // 'flip-clock-test-client'
 const scoreSourceClients = ['scoreboard-controls', 'game-clock'];
 const messageTypes = [
     'scoreUpdate',
@@ -53,7 +53,8 @@ const messageTypes = [
     'gameSegment',
     'gameClock',
     'timeOut',
-    'flipClock'
+    'gameFlipClock',
+    'jamFlipClock'
 ]
 
 // on a new connection, server handles incoming websocket events

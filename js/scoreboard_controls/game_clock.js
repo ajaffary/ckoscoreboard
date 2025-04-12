@@ -324,7 +324,7 @@ startGameClockButton.addEventListener('click', () => {
         senderId: clientId,
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
-        content: 'start',
+        content: { action: 'start' }
     };
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
@@ -342,7 +342,7 @@ stopGameClockButton.addEventListener('click', () => {
         senderId: clientId,
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
-        content: 'stop',
+        content: { action: 'stop' }
     };
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
@@ -360,7 +360,7 @@ resetGameClockButton.addEventListener('click', () => {
         senderId: clientId,
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
-        content: 'clear',
+        content: { action: 'reset' }
     };
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
@@ -368,3 +368,16 @@ resetGameClockButton.addEventListener('click', () => {
     // put this with input field below if chat window needed
     // messageInput.value = '';
 });
+
+updateGameClockButton.addEventListener('click', function() {
+    // check Copilot code for function that creates messages
+    // same message as in mutation observer callback
+    const message = {
+        type: 'flipClock',
+        senderId: clientId,
+        content: {action: 'update', data: clock } 
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+    }
+);

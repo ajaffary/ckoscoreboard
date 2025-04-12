@@ -12,9 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scoreboard_banner.css">
     <link rel="stylesheet" href="fonts.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title id="scoreboard-banner">Scoreboard Banner</title>
+    <link rel='stylesheet' href='../cko-pomodoro-clock/flipclock.css'>
+    <link rel="stylesheet" href="../cko-pomodoro-clock/dist/style.css">    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js'></script>
 </head>
 <body>
     <div class="timer-container">
@@ -28,9 +30,16 @@
             <p id="game-segment" class="game-segment">
                 PERIOD <span id="period-number">1</span>
             </p>
-            <p class="game-clock">
-                <span id="game-clock-minutes">30</span>:<span id="game-clock-seconds">00</span>
-            </p>
+            <div class="flip-clock-container">
+                <p class="timer" id="timer"></p>
+            </div>
+            
+            <!-- 
+                <div class="timer"></div>
+                <p class="game-clock">
+                    <span id="game-clock-minutes">30</span>:<span id="game-clock-seconds">00</span>
+                </p> 
+            -->
         </div>
         <div class="tile tbd-tile">
         </div>
@@ -79,6 +88,13 @@
         // handle incoming score updates from server
     </script>
     -->
+
+    <script  src="../cko-pomodoro-clock/flip_clock_controls.js"></script>
+
+    <!--
+        <script  src="../cko-pomodoro-clock/flipdown_instance.js"></script>
+    -->
+    
 
     <script type="text/javascript" src="../js/refresh_check.js"></script>
 
