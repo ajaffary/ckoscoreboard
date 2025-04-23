@@ -320,7 +320,7 @@ resetGameClockButton.addEventListener('click', function() {
 startGameClockButton.addEventListener('click', () => {
     // construct flip clock start message
     const message = {
-        type: 'flipClock',
+        type: 'gameFlipClock',
         senderId: clientId,
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
@@ -338,7 +338,7 @@ startGameClockButton.addEventListener('click', () => {
 stopGameClockButton.addEventListener('click', () => {
     // construct flip clock start message
     const message = {
-        type: 'flipClock',
+        type: 'gameFlipClock',
         senderId: clientId,
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
@@ -356,7 +356,7 @@ stopGameClockButton.addEventListener('click', () => {
 resetGameClockButton.addEventListener('click', () => {
     // construct flip clock start message
     const message = {
-        type: 'flipClock',
+        type: 'gameFlipClock',
         senderId: clientId,
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
@@ -373,7 +373,7 @@ updateGameClockButton.addEventListener('click', function() {
     // check Copilot code for function that creates messages
     // same message as in mutation observer callback
     const message = {
-        type: 'flipClock',
+        type: 'gameFlipClock',
         senderId: clientId,
         content: {action: 'update', data: clock } 
     };

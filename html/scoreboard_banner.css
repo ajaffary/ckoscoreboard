@@ -71,6 +71,11 @@ body {
     padding-top: 10px;
     /* border: 2px solid lightblue;*/
 }
+
+.game-segment {
+    margin-bottom: -10px;
+}
+
 .jam-timer, .game-clock {
     height: 55%;
     justify-self:center;

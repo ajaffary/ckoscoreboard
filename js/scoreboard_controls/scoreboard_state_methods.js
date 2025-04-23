@@ -111,6 +111,7 @@ function restoreSourceStates() {
     restoreJamNumber();
     restoreTimeOut();
     restoreGameSegment();
+    restoreGameClock();
 }
 
 /*

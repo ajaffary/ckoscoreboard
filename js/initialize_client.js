@@ -19,9 +19,11 @@ const wsaddr = {
     localhost: 'localhost',
     home:'192.168.1.155',
     cko: '192.168.1.157',
+    ckowifi: '192.168.1.169',
+    necrohell: '172.20.10.2',
 };
 
-const hostname = wsaddr.home;
+const hostname = wsaddr.localhost;
 
 // new Websocket client
 let ws;
@@ -33,7 +35,7 @@ let clientIdElement = document.querySelector('title');
 let clientId = clientIdElement.id;
 
 const targetClients = ['scoreboard-banner', 'scoreboard-announcers']; 
-const sourceClients = ['scoreboard-controls', 'game-clock'];
+const sourceClients = ['scoreboard-controls', 'game-clock']; // 'game-clock'
 // target client messages
 // trying to keep this in a separate file and javascript is fucking off
 function handleMessage(data) {
@@ -43,9 +45,10 @@ function handleMessage(data) {
         // and only update minutes when seconds = 0
         gameClockMinutes.textContent = data.content.minutes;
         gameClockSeconds.textContent = data.content.seconds;
-    } else if (data.type === 'flipClock') {
+    } else if (data.type === 'gameFlipClock') {
         // control flip clock
         // execute function defined by data.content
+        // this is handled in another file
         console.log(data.content);
     }
     else if (data.type === 'scoreUpdate') {
@@ -120,9 +123,10 @@ function connectWebSocket() {
         else if (clientId == 'scoreboard-controls') {
             // scoreboard-controls:  restoreSourceStates()
             sendUpdateWhenReady(restoreSourceStates);
+            // sendUpdateWhenReady(restoreGameClock);
         } else if (clientId == 'game-clock') {
             // game-clock: restoreGameClock()
-            sendUpdateWhenReady(restoreGameClock);
+            // sendUpdateWhenReady(restoreGameClock);
         };
         
     };
@@ -139,6 +143,7 @@ function connectWebSocket() {
                 if (data.targetId == 'scoreboard-controls') {
                     // scoreboard-controls:  restoreSourceStates()
                     sendUpdateWhenReady(restoreSourceStates);
+                    // sendUpdateWhenReady(restoreGameClock);
                 } 
                 else if (data.targetId == 'game-clock') {
                     // game-clock: restoreGameClock()

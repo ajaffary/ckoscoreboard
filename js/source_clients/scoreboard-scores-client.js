@@ -12,7 +12,8 @@
 // send both team scores
 // this element needs to be added to the scoreboard-scores.html file
 const updateScoresButton = document.getElementById('both-team-update-score-button');
-        
+
+/*
 updateScoresButton.addEventListener('click', () => {
     // construct score update message
     const message = {
@@ -33,10 +34,37 @@ updateScoresButton.addEventListener('click', () => {
     // put this with input field below if chat window needed
     // messageInput.value = '';
 });
+*/
+
+// Both Teams Flip Counter Update
+updateScoresButton.addEventListener('click', () => {
+    // construct score update message
+    const message = {
+        type: 'scoreFlipCounter',
+        senderId: clientId,
+        // no need to specify targetId
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        // targetId: targetIdInput.value,
+        content: {
+            action: 'both', 
+            data: {
+                home: homeTeamScore.textContent,
+                away: awayTeamScore.textContent,
+            }
+        },
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+    // no need for messageInput.value to be cleared here
+    // put this with input field below if chat window needed
+    // messageInput.value = '';
+});
 
 // send home team score only
 const updateHomeTeamButton = document.getElementById('home-team-update-score-button');
-        
+
+/*
 updateHomeTeamButton.addEventListener('click', () => {
     // construct score update message
     const message = {
@@ -53,10 +81,33 @@ updateHomeTeamButton.addEventListener('click', () => {
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
 });
+*/
+
+// Home Team Flip Counter Update
+updateHomeTeamButton.addEventListener('click', () => {
+    // construct score update message
+    const message = {
+        type: 'scoreFlipCounter',
+        senderId: clientId,
+        // no need to specify targetId
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        // targetId: targetIdInput.value,
+        content: {
+            action: 'home', 
+            data: {
+                home: homeTeamScore.textContent,
+            }
+        },
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+});
 
 // send away team score only
 const updateAwayTeamButton = document.getElementById('away-team-update-score-button');
-        
+
+/*
 updateAwayTeamButton.addEventListener('click', () => {
     // construct score update message
     const message = {
@@ -73,6 +124,28 @@ updateAwayTeamButton.addEventListener('click', () => {
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
 });
+*/
+
+// Away Team Flip Counter Update
+updateAwayTeamButton.addEventListener('click', () => {
+    // construct score update message
+    const message = {
+        type: 'scoreFlipCounter',
+        senderId: clientId,
+        // no need to specify targetId
+        // server will send only to scoreboard-banner and scoreboard-announcers 
+        // clients
+        // targetId: targetIdInput.value,
+        content: {
+            action: 'away', 
+            data: {
+                away: awayTeamScore.textContent,
+            }
+        },
+    };
+    ws.send(JSON.stringify(message));
+    console.log(`Sent message: ${JSON.stringify(message)}`);
+});
 
 // Note: Choosing not to attach event listeners to RESET buttons
 // Instead, reset button will reset scores locally
@@ -80,8 +153,6 @@ updateAwayTeamButton.addEventListener('click', () => {
 // bothTeamResetButton
 // homeTeamResetButton
 // awayTeamResetButton
-
-
 
 /*
 // handle incoming message data

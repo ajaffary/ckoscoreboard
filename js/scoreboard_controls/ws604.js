@@ -25,18 +25,31 @@ function connectToJamTimer() {
             if (event.data == "01:00") {
                 // this means clock has been reset to 1:00
                 // use this to activate clear clock function
+                // send 
                 console.log("Timer RESET")
             } else if (event.data[0] == ":") {
                 // this means timer is paused
                 // use this to activate stop clock function
                 console.log("Timer STOP")
-            } else if (event.data.length() == 2) {
+            } else if (event.data.length == 2) {
                 // this means clock is ticking
                 // timer only sends two digits
                 // could set condition event.data == "59"
                 // and activate start clock function
                 console.log("Timer COUNTDOWN")
             }
+            // this fucking line below updates the jam timer element
+            // this is just a copy of what the clock reads
+            // for the flip clock, need to remove this line
+            // and replace with flip clock start/stop/reset functions
+            // the flip-clock uses the same ID "jam-timer"
+            // and all the controls are in jam_timer_flip_clock_controls.js
+            // so I can replace this file in from scoreboard_banner_flip_clock
+            // I need to keep this websocket code but replace the line below
+            // with the conditional responses above
+            // which will activate the corresponding flip clock controls
+            // I want to manually observe how they sync 
+            // between the two scoreboard banners
             document.getElementById("jam-timer").innerHTML = display;
         }
         Socket.onclose = (event) => {

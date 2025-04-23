@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+}
+:root {
+    --cbc-color: #23a0da;
+    --hh-color: #29b24c;
+    --prp-color: #a14b9c;
+    --rr-color: #ec1f27;
+    --cko-gold: #b59c42;
+    --logo-bg-color: black; /* #ededed; */
+    --text-color: white;
+}
+
+html {
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    /* background-color: lightgreen;*/
+    background-color: transparent;
+}
+
+body {
+    height: 100%;
+    width: 1920px;
+    display: grid;
+    align-items: end;
+    margin: auto;
+    padding: 0px;
+    border: 4px solid black;
+    border-radius: 2px;
+    color: white;
+}
+div {
+    margin: 0;
+}
+p {
+    margin: 0;
+}
+.timer-container {
+    display: grid;
+    /* grid-template-columns: 0.25fr 2.5fr 1fr 0.75fr 1fr 0.75fr 1fr 2.5fr 0.25fr;*/
+    grid-template-columns: 1.5fr 1fr 2.5fr 0.5fr 1fr 0.5fr 2.5fr 1fr 1.5fr ;
+    align-items: center;
+    column-gap: 20px;
+    height: 120px; 
+    /* border: 2px solid yellow; */
+    background-color: #000000;
+}
+/* grid items */
+.tile {
+    max-height: 120px;
+    align-content: center;
+    text-align: center;
+    /* border: 2px solid white;*/
+    padding: 0;
+    margin: 0;
+}
+.score-tile {
+    font-family: 'Futura Bold';
+    font-size: 5.5rem;
+    /* color: white;*/
+    align-content:start;
+    vertical-align: middle;
+    height: 100%;
+    transform: scale(1);
+    transform-origin: center;
+    /* filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px gray);*/
+    /* border: 2px solid red;*/
+}
+.period-tile, .jam-tile, .timeout-tile {
+    font-family: 'Futura Bold';
+    font-size: 2rem;
+    /* color: white; */
+    /* padding: 10px; */
+    /* background-color: #000000; */
+}
+.jam-number, .game-segment {
+    /* height: 45%;*/
+    /* padding-top: 5px;*/
+    margin-top: 10px;
+    padding: auto;
+    /* border: 2px solid lightblue; */
+}
+#jam-timer, #timer {
+    /* height: 55%;*/
+    justify-self:center;
+    text-align: center;
+    align-content: baseline;
+    font-family: 'Futura Bold';
+    font-size: 3.2rem;
+    letter-spacing: 0.1rem;
+    /* margin-top: -12px;*/
+    /* color: white;*/
+    /* border: 2px solid lightblue;*/
+}
+.period-tile {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    /* border: 2px solid pink;*/
+    /* filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px gray);*/
+}
+.tbd-tile {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    padding-left: 50%;
+    visibility: hidden;
+    /* border: 2px solid pink; */
+}
+.home-logo-tile {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    text-align: center;
+    vertical-align: end;
+    /* padding: 10px; */
+    height: 124px;
+    /* border: 2px solid magenta;*/
+}
+.home-score-tile {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+    text-align: center;
+}
+.cko-tile {
+    grid-column: 5;
+    grid-row: 1;
+    justify-self: center;
+    height: 120px;
+    width: 100%;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    /* border: 2px solid green; */  
+}
+.away-score-tile {
+    grid-column: 6;
+    grid-row: 1;
+    justify-self: start;
+    text-align: center;
+}
+.away-logo-tile {
+    grid-column: 7;
+    grid-row: 1;
+    justify-self: start;
+    text-align: center;
+    vertical-align: center;
+    /* padding: 10px; */
+    height: 124px;
+    /* border: 2px solid magenta; */
+}
+.timeout-tile {
+    grid-column: 8;
+    grid-row: 1;
+    justify-self: center;
+    /* border: 2px solid lightblue; */
+    /* filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px gray);*/
+}
+.jam-tile {
+    grid-column: 9;
+    grid-row: 1;
+    justify-self: center; 
+    /* border: 2px solid lightblue;*/
+    /* filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px gray);*/
+}
+
+
+/* Team Logos */
+.logo-image {
+    padding-bottom: 0px;
+    /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
+    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px white);
+    /* filter: blur(0px) saturate(200%) drop-shadow(1px 2px 0px black);*/
+    max-height: 120px;
+    /* border: 0px solid green; */
+}
+.logo-tile {
+    font-size: 2rem;
+    background-color: var(--logo-bg-color);
+    /* padding-bottom: 15px;*/
+    align-self: center;
+    max-width: 200px;
+    border-radius: 4px;
+}
+
+.cbc {
+    font-family: "Comic Book Crushers";
+    font-size: 2.8rem;
+    color: white;
+    text-shadow: 2px 5px 10px black;
+    background-color: #23a0da;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    height: 60%;
+}
+.cbc-bg {
+    font-family: "Comic Book Crushers";
+    font-size: 2.8rem;
+    color: white;
+    text-shadow: 2px 5px 10px black;
+    background-color: #23a0da;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    height: 60%;
+}
+.hh {
+    font-family: "Horrific Haunters";
+    font-size: 3rem;
+    color: #29b24c;
+}
+.prp {
+    font-family: "Punk Rock Punishers";
+    font-size: 3.2rem;
+    color: #eeeeee;
+    /* color: white;*/
+    text-shadow: -2px 5px 10px black;
+    background-color: #a14b9c;
+    padding-bottom: 0px;
+    border-radius: 10px;
+    height: 60%;
+}
+.rr {
+    font-family: "Retro Rumblers";
+    font-size: 3rem;
+    color: #ec1f27;
+    padding-top: 15px;
+}

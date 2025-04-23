@@ -249,8 +249,8 @@ const updateGameSegmentButton = document.getElementById('update-game-segment-but
 // already set in HTML file
 
 // Clear Message button
-const clearUpdate = document.getElementById('clear-button');
-clearUpdate.setAttribute('onclick', 'updateText(" ", gameSegment)');
+// const clearUpdate = document.getElementById('clear-button');
+// clearUpdate.setAttribute('onclick', 'updateText(" ", gameSegment)');
  
 // 'gameClock' - client sends game clock update
 // TBD

@@ -19,6 +19,8 @@ const wsaddr = {
     localhost: 'localhost',
     home:'192.168.1.155',
     cko: '192.168.1.157',
+    ckowifi: '192.168.1.169',
+    necrohell: '172.20.10.2',
 };
 
 const hostname = wsaddr.localhost;
@@ -44,7 +46,7 @@ const readyClients = new Set();
 
 const chatClients = ['scoreboard-controls', 'scoreboard-announcers'];
 const scoreTargetClients = ['scoreboard-banner', 'scoreboard-announcers']; // 'flip-clock-test-client'
-const scoreSourceClients = ['scoreboard-controls', 'game-clock'];
+const scoreSourceClients = ['scoreboard-controls']; // 'game-clock'
 const messageTypes = [
     'scoreUpdate',
     'homeTeamUpdate',
@@ -54,7 +56,8 @@ const messageTypes = [
     'gameClock',
     'timeOut',
     'gameFlipClock',
-    'jamFlipClock'
+    'jamFlipClock',
+    'scoreFlipCounter'
 ]
 
 // on a new connection, server handles incoming websocket events
@@ -145,7 +148,7 @@ wss.on('connection', (ws) => {
                     targetClient.send(JSON.stringify(messageToTarget));
                     console.log(`Message sent to ${targetClient}: ${messageToTarget}`);
                 } else {
-                    ws.send(JSON.stringify({ type: 'error', message: 'Target client not available' }));
+                    ws.send(JSON.stringify({ type: 'message', message: 'Target client not available' }));
                 }
             }
         }
