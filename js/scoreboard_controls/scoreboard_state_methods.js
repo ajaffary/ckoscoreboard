@@ -107,6 +107,7 @@ function restoreGameSegment() {
 function restoreSourceStates() {
     // get the state of the scoreboard from localStorage
     // send data to clients
+    console.log("restoreSourceStates function being called.")
     restoreScores();
     restoreJamNumber();
     restoreTimeOut();

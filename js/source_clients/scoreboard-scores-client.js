@@ -9,17 +9,20 @@
 
 // messages sent with an eventlistener attached to score update button
 
+
 // send both team scores
-// this element needs to be added to the scoreboard-scores.html file
 const updateScoresButton = document.getElementById('both-team-update-score-button');
 
-/*
+/* */
+// Both Teams Standard Text Score Update 
 updateScoresButton.addEventListener('click', () => {
     // construct score update message
     const message = {
         type: 'scoreUpdate',
         senderId: clientId,
-        // no need to specify targetId
+        // update to send to scoreboard announcers only
+        // banner with flip-counters no longer has <div id="home-team-score">
+        // so this will be lost
         // server will send only to scoreboard-banner and scoreboard-announcers 
         // clients
         // targetId: targetIdInput.value,
@@ -34,7 +37,7 @@ updateScoresButton.addEventListener('click', () => {
     // put this with input field below if chat window needed
     // messageInput.value = '';
 });
-*/
+
 
 // Both Teams Flip Counter Update
 updateScoresButton.addEventListener('click', () => {
@@ -64,7 +67,8 @@ updateScoresButton.addEventListener('click', () => {
 // send home team score only
 const updateHomeTeamButton = document.getElementById('home-team-update-score-button');
 
-/*
+/* */
+// Home Team Standard Text Score Update
 updateHomeTeamButton.addEventListener('click', () => {
     // construct score update message
     const message = {
@@ -81,7 +85,7 @@ updateHomeTeamButton.addEventListener('click', () => {
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
 });
-*/
+
 
 // Home Team Flip Counter Update
 updateHomeTeamButton.addEventListener('click', () => {
@@ -107,7 +111,8 @@ updateHomeTeamButton.addEventListener('click', () => {
 // send away team score only
 const updateAwayTeamButton = document.getElementById('away-team-update-score-button');
 
-/*
+/* */
+// Away Team Standard Text Score Update
 updateAwayTeamButton.addEventListener('click', () => {
     // construct score update message
     const message = {
@@ -124,7 +129,6 @@ updateAwayTeamButton.addEventListener('click', () => {
     ws.send(JSON.stringify(message));
     console.log(`Sent message: ${JSON.stringify(message)}`);
 });
-*/
 
 // Away Team Flip Counter Update
 updateAwayTeamButton.addEventListener('click', () => {

@@ -23,7 +23,7 @@ const wsaddr = {
     necrohell: '172.20.10.2',
 };
 
-const hostname = wsaddr.localhost;
+const hostname = wsaddr.cko;
 
 // new Websocket client
 let ws;
@@ -131,36 +131,22 @@ function connectWebSocket() {
         
     };
 
-    // handle incoming messages for source clients
-    // the message type = restoreStates
+    // Combine all ws.onmessage logic into a single handler
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        console.log(`Message received: ${data}`);
+        console.log(`Message type: ${data.type}`);
 
-    if (sourceClients.includes(clientId)) {
-        ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            if (data.type == 'restoreStates') {
-                console.log(`Message received: ${data}`);
-                console.log(`Message type: ${data.type}`);
-                if (data.targetId == 'scoreboard-controls') {
-                    // scoreboard-controls:  restoreSourceStates()
-                    sendUpdateWhenReady(restoreSourceStates);
-                    // sendUpdateWhenReady(restoreGameClock);
-                } 
-                else if (data.targetId == 'game-clock') {
-                    // game-clock: restoreGameClock()
-                    sendUpdateWhenReady(restoreGameClock);
-                };
+        if (data.type === 'restoreStates') {
+            if (data.targetId === 'scoreboard-controls') {
+                sendUpdateWhenReady(restoreSourceStates);
+            } else if (data.targetId === 'game-clock') {
+                sendUpdateWhenReady(restoreGameClock);
             }
-        };
-    }    
-    // handle all incoming messages for target clients
-    if (targetClients.includes(clientId)) {
-        ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            console.log(`Message received: ${data}`);
-            console.log(`Message type: ${data.type}`);
+        } else {
             handleMessage(data);
-        };
-    }    
+        }
+    };
 
     ws.onclose = (event) => {
         console.log('Websocket connection closed:', event);
