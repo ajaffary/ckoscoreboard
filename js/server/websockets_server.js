@@ -18,7 +18,7 @@ const path = require('path');
 const wsaddr = { 
     localhost: 'localhost',
     home:'192.168.1.155',
-    cko: '192.168.1.157',
+    cko: '192.168.1.154',
     ckowifi: '192.168.1.169',
     necrohell: '172.20.10.2',
 };

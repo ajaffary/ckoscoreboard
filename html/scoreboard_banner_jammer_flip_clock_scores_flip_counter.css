@@ -104,9 +104,11 @@ p {
     grid-column: 2;
     grid-row: 1;
     justify-self: center;
-    padding-left: 50%;
+    padding-left: 0;
+    width: 100px;
+    height: 124px;
     visibility: hidden;
-    /* border: 2px solid pink; */
+    /* border: 2px solid pink;*/
 }
 .home-logo-tile {
     grid-column: 3;
@@ -117,12 +119,14 @@ p {
     /* padding: 10px; */
     height: 124px;
     /* border: 2px solid magenta;*/
+    /* margin-right: 65px; */
 }
 .home-score-tile {
     grid-column: 4;
     grid-row: 1;
     justify-self: end;
     text-align: center;
+    margin: 2px;
 }
 .cko-tile {
     grid-column: 5;
@@ -139,6 +143,7 @@ p {
     grid-row: 1;
     justify-self: start;
     text-align: center;
+    margin: 2px;
 }
 .away-logo-tile {
     grid-column: 7;
@@ -170,10 +175,33 @@ p {
 .logo-image {
     padding-bottom: 0px;
     /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
-    filter: blur(0px) saturate(200%) drop-shadow(2px 2px 0px white);
+    filter: blur(0px) saturate(150%) drop-shadow(1px 1px 0px white);
     /* filter: blur(0px) saturate(200%) drop-shadow(1px 2px 0px black);*/
     max-height: 120px;
-    /* border: 0px solid green; */
+    border: 2px solid green;
+}
+.home-logo-image {
+    padding-bottom: 0px;
+    /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
+    filter: blur(0px) saturate(200%) drop-shadow(-1px 1px 0px white);
+    /* filter: blur(0px) saturate(200%) drop-shadow(1px 1px 1px white);*/
+    /* filter: sepia(1) hue-rotate(304deg) saturate(10000%) brightness(100%);*/
+    /* transform: rotate(-10deg);*/
+    /* filter: blur(0px) saturate(200%) drop-shadow(1px 2px 0px black);*/
+    max-height: 120px;
+    max-width: 250px;
+    /* border: 2px solid green;*/
+}
+.away-logo-image {
+    padding-bottom: 0px;
+    /* box-shadow: 0 0 2px 1px rgba(240, 240, 240, 0.5);*/
+    filter: blur(0px) saturate(200%) drop-shadow(1px 1px 0px white);
+    /* filter: sepia(1) hue-rotate(304deg) saturate(10000%) brightness(100%);*/
+    /* transform: rotate(-10deg); */
+    /* filter: blur(0px) saturate(200%) drop-shadow(1px 2px 0px black);*/
+    max-height: 120px;
+    max-width: 250px;
+    /* border: 2px solid green; */
 }
 .logo-tile {
     font-size: 2rem;
